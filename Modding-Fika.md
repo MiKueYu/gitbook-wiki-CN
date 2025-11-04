@@ -102,40 +102,40 @@ void RegisterReusable<T, TUserData>(Action<T, TUserData> handle) where T : class
 
 这些数据包的示例可以在[这里](https://github.com/project-fika/Fika-Plugin/blob/47a9d37aa40e2e7cc0b9628c7114115cd3805cd4/Fika.Core/Networking/Packets/World/WorldPacket.cs)找到。在某个地方创建类，跟踪它并重复使用它。您可以在[FikaClientWorld](https://github.com/project-fika/Fika-Plugin/blob/47a9d37aa40e2e7cc0b9628c7114115cd3805cd4/Fika.Core/Main/ClientClasses/FikaClientWorld.cs)中找到示例。
 
-## Sending a Packet
+## 发送数据包
 
-To send a packet, you need a `IFikaNetworkManager`. This is either a `FikaServer` or `FikaClient` that you can access with the `Comfort.Common` namespace using `Singleton<IFikaNetworkManager>.Instance`. To determine whether you are a server or client, use `FikaBackendUtils.IsServer`.
+要发送数据包，您需要一个 `IFikaNetworkManager`。这可以是 `FikaServer` 或 `FikaClient`，您可以通过 `Comfort.Common` 命名空间使用 `Singleton<IFikaNetworkManager>.Instance` 来访问。要确定您是服务器还是客户端，请使用 `FikaBackendUtils.IsServer`。
 
-Use this method to send packets:
+使用此方法发送数据包：
 
 {% code overflow="wrap" %}
 ```cs
 /// <summary>
-/// Sends a packet.
+/// 发送数据包。
 /// </summary>
-/// <typeparam name="T">The type of packet to send, which must implement <see cref="INetSerializable"/>.</typeparam>
-/// <param name="packet">The packet instance to send, passed by reference.</param>
-/// <param name="deliveryMethod">The delivery method (reliable, unreliable, etc.) to use for sending the packet.</param>
-/// <param name="broadcast">If <see langword="true"/>, the packet will be sent to multiple recipients; otherwise, it will be sent to a single target (server is always broadcast).</param>
+/// <typeparam name="T">要发送的数据包类型，必须实现<see cref="INetSerializable"/>。</typeparam>
+/// <param name="packet">要发送的数据包实例，按引用传递。</param>
+/// <param name="deliveryMethod">用于发送数据包的传递方法（可靠、不可靠等）。</param>
+/// <param name="broadcast">如果为<see langword="true"/>，数据包将发送给多个接收者；否则将发送给单个目标（服务器始终是广播）。</param>
 void SendData<T>(ref T packet, DeliveryMethod deliveryMethod, bool broadcast = false) where T : INetSerializable;
 ```
 {% endcode %}
 
-The `broadcast` argument determines whether it will be sent to _all other clients_. As the server, this is always `true`.
+`broadcast` 参数决定是否发送给_所有其他客户端_。作为服务器，这始终为 `true`。
 
-If you want to send to just one specific `NetPeer`, e.g. after receiving a packet and you want to respond to that peer:
+如果您只想发送给一个特定的 `NetPeer`，例如在接收数据包后想要响应那个对等端：
 
 {% code overflow="wrap" %}
 ```csharp
 /// <summary>
-/// Sends a packet of data directly to a specific peer.
+/// 直接向特定对等端发送数据包。
 /// </summary>
-/// <typeparam name="T">The type of packet to send, which must implement <see cref="INetSerializable"/>.</typeparam>
-/// <param name="packet">The packet instance to send, passed by reference.</param>
-/// <param name="deliveryMethod">The delivery method (reliable, unreliable, etc.) to use for sending the packet.</param>
-/// <param name="peer">The target <see cref="NetPeer"/> that will receive the packet.</param>
+/// <typeparam name="T">要发送的数据包类型，必须实现<see cref="INetSerializable"/>。</typeparam>
+/// <param name="packet">要发送的数据包实例，按引用传递。</param>
+/// <param name="deliveryMethod">用于发送数据包的传递方法（可靠、不可靠等）。</param>
+/// <param name="peer">将接收数据包的目标<see cref="NetPeer"/>。</param>
 /// <remarks>
-/// Should only be used as a <see cref="FikaServer"/>, since a <see cref="FikaClient"/> only has one <see cref="NetPeer"/>.
+/// 只应作为<see cref="FikaServer"/>使用，因为<see cref="FikaClient"/>只有一个<see cref="NetPeer"/>。
 /// </remarks>
 void SendDataToPeer<T>(ref T packet, DeliveryMethod deliveryMethod, NetPeer peer) where T : INetSerializable;
 ```
@@ -144,38 +144,38 @@ void SendDataToPeer<T>(ref T packet, DeliveryMethod deliveryMethod, NetPeer peer
 ```mermaid
 flowchart LR
 
-A[Send from Client 1] --->|Packet| B[Receive on Server]
-B --> C{Broadcast?}
-C -->|Yes| D[Send to Client 2 & 3]
-C -->|No| E[Done]
+A[客户端1发送] --->|数据包| B[服务器接收]
+B --> C{广播？}
+C -->|是| D[发送给客户端2和3]
+C -->|否| E[完成]
 ```
 
 {% hint style="warning" %}
-A client only has one `NetPeer` and it is _**always**_ the server! A client is never aware of other clients.
+客户端只有一个 `NetPeer`，它_**始终**_是服务器！客户端永远不会感知到其他客户端。
 {% endhint %}
 
-Some specific functions are class specific, and cannot be called from the interface singleton. You can access the specific `FikaServer` or `FikaClient` using e.g. `Singleton<FikaServer>.Instance`.
+某些特定函数是类特定的，不能从接口单例调用。您可以使用 `Singleton<FikaServer>.Instance` 等访问特定的 `FikaServer` 或 `FikaClient`。
 
-The specific methods are:
+具体方法如下：
 
-#### Client
+#### 客户端
 
 {% code overflow="wrap" %}
 ```csharp
 /// <summary>
-/// Sends a reusable packet
+/// 发送可重用数据包
 /// </summary>
-/// <typeparam name="T">The <see cref="IReusable"/> to send</typeparam>
-/// <param name="packet">The <see cref="INetSerializable"/> to send</param>
-/// <param name="deliveryMethod">The deliverymethod</param>
+/// <typeparam name="T">要发送的<see cref="IReusable"/></typeparam>
+/// <param name="packet">要发送的<see cref="INetSerializable"/></param>
+/// <param name="deliveryMethod">传递方法</param>
 /// <remarks>
-/// Reusable will always be of type broadcast when sent from a client
+/// 从客户端发送时，可重用数据包始终是广播类型
 /// </remarks>
 public void SendReusable<T>(T packet, DeliveryMethod deliveryMethod) where T : class, IReusable, new()
 ```
 {% endcode %}
 
-#### Server
+#### 服务器
 
 {% code overflow="wrap" %}
 ```csharp
@@ -185,12 +185,12 @@ public void SendReusableToAll<T>(T packet, DeliveryMethod deliveryMethod, NetPee
 
 ***
 
-## General Information About Data
+## 关于数据的一般信息
 
 {% hint style="info" %}
-Keep in mind that performance and bandwidth is not free! Do not send redundant data every `Update()` unless you have to.&#x20;
+请记住，性能和带宽不是免费的！除非必须，否则不要在每次 `Update()` 时发送冗余数据。&#x20;
 
-Fika has a class that you can inherit called `ThrottledMono`, where you can set an `UpdateRate` which is how many times it should update per seconds. This can dramatically increase performance and reduce bandwidth used.
+Fika有一个您可以继承的类叫做 `ThrottledMono`，您可以设置 `UpdateRate`，即每秒更新次数。这可以显著提高性能并减少使用的带宽。
 {% endhint %}
 
 ### Calculating Packet Size (UDP with Headers)
@@ -228,41 +228,41 @@ $$
 
 ***
 
-#### Example
+#### 示例
 
-Suppose you are sending a `Vector3`, which is 3 floats (4 bytes each), with 2 bytes of packet-specific overhead, 8 bytes UDP header, and 20 bytes IP header:
-
-$$
-Packet Size=3×4+2+8+20=42 bytes
-$$
+假设您正在发送一个 `Vector3`，即3个浮点数（每个4字节），加上2字节的数据包特定开销，8字节UDP头部和20字节IP头部：
 
 $$
-Packet Size in bits=42×8=336 bits
+数据包大小=3×4+2+8+20=42 字节
 $$
 
-Even this small payload, if sent frequently (e.g., every frame in a game), can consume significant bandwidth. Notice that even though the payload is only 12 bytes, headers increase the total packet size almost _**4×**_.\
+$$
+位数的数据包大小=42×8=336 位
+$$
+
+即使这个小有效载荷，如果频繁发送（例如，游戏中的每帧），也会消耗大量带宽。请注意，即使有效载荷只有12字节，头部也会使总数据包大小增加近_**4倍**_。\
 \
-Now imagine this being unthrottled, and the client is running at 120 FPS:
+现在想象这是不受限制的，客户端以120 FPS运行：
 
-<mark style="color:$primary;">We already have:</mark>
-
-$$
-Packet Size=42 bytes
-$$
-
-<mark style="color:$primary;">If we send 120 packets per second:</mark>
+<mark style="color:$primary;">我们已经有了：</mark>
 
 $$
-Data per second (bytes)=42×120
+数据包大小=42 字节
 $$
 
-#### Step-by-step
+<mark style="color:$primary;">如果我们每秒发送120个数据包：</mark>
 
-* Packet size is 42 bytes.
-* Sending 120 packets per second.
-* Multiply packet size by number of packets: 42 × 120.
+$$
+每秒数据（字节）=42×120
+$$
 
-<mark style="color:$primary;">Break it down:</mark>&#x20;
+#### 逐步分解
+
+* 数据包大小为42字节。
+* 每秒发送120个数据包。
+* 数据包大小乘以数据包数：42 × 120。
+
+<mark style="color:$primary;">分解计算：</mark>&#x20;
 
 $$
 42×120=42×(12×10)=(42×12)×10
@@ -276,7 +276,7 @@ $$
 504×10=5,040
 $$
 
-<mark style="color:$primary;">Convert to bits:</mark>
+<mark style="color:$primary;">转换为位数：</mark>
 
 $$
 5,040×8=40,320位每秒（bps）

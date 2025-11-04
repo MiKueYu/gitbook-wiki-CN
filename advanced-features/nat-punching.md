@@ -1,5 +1,5 @@
 ---
-description: 为专用SPT服务器设置NAT穿孔的逐步过程。
+description: 为专用SPT服务器设置NAT穿透的逐步过程。
 layout:
   width: default
   title:
@@ -16,26 +16,26 @@ layout:
     visible: true
 ---
 
-# NAT穿孔
+# NAT穿透
 
-## 什么是NAT穿孔？
+## 什么是NAT穿透？
 
-NAT穿孔是一种[NAT穿越技术](https://en.wikipedia.org/wiki/NAT_traversal)，允许位于不同路由器后的两个设备建立直接的点对点连接。当由于ISP或网络限制而无法进行端口转发时，这尤其有用。
+NAT穿透是一种[NAT穿越技术](https://en.wikipedia.org/wiki/NAT_traversal)，允许位于不同路由器后的两个设备建立直接的点对点连接。当由于ISP或网络限制而无法进行端口转发时，这尤其有用。
 
-然而，并非所有路由器都支持NAT穿孔。例如，**对称NAT**路由器通常由于其处理外部端口映射的方式而阻止成功的NAT穿孔。
+然而，并非所有路由器都支持NAT穿透。例如，**对称NAT**路由器通常由于其处理外部端口映射的方式而阻止成功的NAT穿透。
 
 ## 它是如何工作的？
 
 公共服务器监听来自客户端的传入连接，并记录它们的外部IP地址和端口。然后通过共享对方的外部IP地址来介绍每个客户端。例如，`客户端1`接收`客户端2`的外部IP地址，反之亦然。
 
-这就是NAT穿孔发生的时候：当`客户端1`接收到`客户端2`的IP地址时，它开始向`客户端2`发送多个数据包（即"穿孔"）。同时，`客户端2`向`客户端1`发送数据包，在两个客户端的路由器中创建路由条目。
+这就是NAT穿透发生的时候：当`客户端1`接收到`客户端2`的IP地址时，它开始向`客户端2`发送多个数据包（即"穿透"）。同时，`客户端2`向`客户端1`发送数据包，在两个客户端的路由器中创建路由条目。
 
 此时，两个路由器都允许通过此特定路由进行通信，然后可以利用该路由来托管`Fika`突袭。
 
 ## 要求
 
 * SPT服务器必须托管在外部可访问的机器上，例如VPS。
-* 突袭主机和通过NAT穿孔连接的任何玩家都必须使用支持全锥形NAT的路由器，因为这是正常连接所必需的。您可以通过在线搜索您特定的路由器型号来检查路由器的NAT类型。
+* 突袭主机和通过NAT穿透连接的任何玩家都必须使用支持全锥形NAT的路由器，因为这是正常连接所必需的。您可以通过在线搜索您特定的路由器型号来检查路由器的NAT类型。
 
 ## 注意事项
 
@@ -47,9 +47,9 @@ NAT穿孔是一种[NAT穿越技术](https://en.wikipedia.org/wiki/NAT_traversal)
 {% step %}
 ### 设置公共Windows服务器
 
-NAT穿孔需要公共服务器。建议租用便宜的Windows VPS来托管`SPT服务器`；[**LowEndBox**](https://lowendbox.com/)上列出的提供商是低成本选项的良好起点。
+NAT穿透需要公共服务器。建议租用便宜的Windows VPS来托管`SPT服务器`；[**LowEndBox**](https://lowendbox.com/)上列出的提供商是低成本选项的良好起点。
 
-如果您不确定NAT穿孔是否适用于您的网络配置，可以使用[**Kamatera**](https://www.kamatera.com/)配置临时VPS，它提供按小时计费——使其成为测试的经济高效解决方案。
+如果您不确定NAT穿透是否适用于您的网络配置，可以使用[**Kamatera**](https://www.kamatera.com/)配置临时VPS，它提供按小时计费——使其成为测试的经济高效解决方案。
 {% endstep %}
 
 {% step %}
@@ -93,7 +93,7 @@ NAT穿孔需要公共服务器。建议租用便宜的Windows VPS来托管`SPT�
 {% endstep %}
 
 {% step %}
-### 在Fika服务器中启用NAT穿孔
+### 在Fika服务器中启用NAT穿透
 
 此设置控制`Nat Punch Server`是否应在您的SPT服务器上运行。
 
@@ -153,13 +153,13 @@ NAT穿孔需要公共服务器。建议租用便宜的Windows VPS来托管`SPT�
 {% endstep %}
 
 {% step %}
-### 在Fika中启用NAT穿孔（仅突袭主机）
+### 在Fika中启用NAT穿透（仅突袭主机）
 
-此设置表示连接到您突袭的任何玩家都必须使用NAT穿孔。这是一个客户端设置，意味着它仅适用于**您**，突袭主机。其他玩家不需要启用此设置，除非他们打算在没有端口转发的情况下主持突袭。
+此设置表示连接到您突袭的任何玩家都必须使用NAT穿透。这是一个客户端设置，意味着它仅适用于**您**，突袭主机。其他玩家不需要启用此设置，除非他们打算在没有端口转发的情况下主持突袭。
 
 * 按F12打开配置管理器。
 * 选中`Advanced settings`框。
-* 选中`Nat Punching`框以启用NAT穿孔。
+* 选中`Nat Punching`框以启用NAT穿透。
 
 <figure><img src="../.gitbook/assets/image (41).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
@@ -185,7 +185,7 @@ NAT穿孔需要公共服务器。建议租用便宜的Windows VPS来托管`SPT�
 
 ## 无头客户端
 
-要在`headless client`中启用NAT穿孔：
+要在`headless client`中启用NAT穿透：
 
 * 确保您已按照上述所有步骤操作。
 * 导航到`headless client`的`BepInEx\config`。
