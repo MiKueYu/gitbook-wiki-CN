@@ -1,125 +1,125 @@
 ---
-description: Step-by-step process for hosting a Fika server using a VPN client.
+description: 使用VPN客户端托管Fika服务器的逐步过程。
 ---
 
-# Host using a VPN
+# 使用VPN托管
 
-A Virtual Private Network (VPN) enables you to join the same network via a public centralized server. You can either use a free VPN service such as [Radmin](https://www.radmin-vpn.com/) or set up your own VPN. This method is recommended only as a last resort if you are unable to use port forwarding.
+虚拟专用网络（VPN）使您能够通过公共集中服务器加入同一网络。您可以使用免费的VPN服务，如[Radmin](https://www.radmin-vpn.com/)或设置您自己的VPN。仅在无法使用端口转发时才建议使用此方法。
 
-This guide will use Radmin as the VPN client. It is able to establish a direct connection if your network allows it, providing the best performance possible.
+本指南将使用Radmin作为VPN客户端。如果您的网络允许，它能够建立直接连接，提供最佳可能的性能。
 
 {% hint style="warning" %}
-Free VPNs services are known to cause performance or connectivity problems, so use at your own risk. The officially supported way of playing Fika is with port forwarding. We will not provide support for issues caused by VPN services.
+免费VPN服务已知会导致性能或连接问题，因此使用风险自负。官方支持的Fika连接方式是使用端口转发。我们不会为VPN服务引起的问题提供支持。
 
-Custom firewalls such as **BitDefender** may also block your connection while playing. Make sure that you allow the connection or temporarily disable it while playing!
+像**BitDefender**这样的自定义防火墙也可能在游戏时阻止您的连接。请确保允许连接或在游戏时临时禁用它！
 
-You may also experience issues if you are using another VPN service, even if it is disabled. If you have problems, consider uninstalling any other virtual network adapters.
+如果您使用另一个VPN服务，即使已禁用，您也可能会遇到问题。如果您有问题，请考虑卸载任何其他虚拟网络适配器。
 {% endhint %}
 
-## Installing the Radmin VPN client
+## 安装Radmin VPN客户端
 
-* Navigate to the [Radmin website](https://www.radmin-vpn.com/) and download the Radmin VPN client.
-* Run the installer and proceed with the installation steps.
-* Reboot your computer. This is important to ensure that the virtual network adapter is correctly installed. **Do not skip this step!**
-* Open Radmin VPN client (from the taskbar or from the start menu).
-* Click `Create network`.
+* 导航到[Radmin网站](https://www.radmin-vpn.com/)并下载Radmin VPN客户端。
+* 运行安装程序并继续安装步骤。
+* 重新启动计算机。这对于确保虚拟网络适配器正确安装很重要。**不要跳过此步骤！**
+* 打开Radmin VPN客户端（从任务栏或从开始菜单）。
+* 点击`创建网络`。
 
 <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
-* Enter a network name (can be anything - make sure to remember it. You need to share it with your friends).
-* Enter a password.
-* Click `Create`.
+* 输入网络名称（可以是任何内容 - 确保记住它。您需要与朋友分享）。
+* 输入密码。
+* 点击`创建`。
 
 <figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
-* Take note of your `VPN IP`, which is displayed below your computer name in Radmin. It will be referred to as `your_vpn_ip` in the following steps.
+* 记下您的`VPN IP`，该IP显示在Radmin中您的计算机名称下方。在以下步骤中它将被称为`your_vpn_ip`。
 
 <figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
 
-* Go to `System` -> `Firewall Exceptions` and click  `Allow All Apps`.
+* 转到`系统`->`防火墙例外`并点击`允许所有应用程序`。
 
 <figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
-## Testing connectivity
+## 测试连接
 
-* Ask your friend(s) to follow the steps [here](../joining-a-fika-server/join-using-a-vpn.md).
-* Right-click their name in Radmin and click `Ping`.
+* 请您的朋友[在此处](../joining-a-fika-server/join-using-a-vpn.md)遵循步骤。
+* 在Radmin中右键点击他们的名称并点击`Ping`。
 
 <figure><img src="../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
-* Close the command prompt when ping is successful.
+* Ping成功时关闭命令提示符。
 
 {% hint style="warning" %}
-If the ping fails then it means that the VPN connection is not working correctly. Everyone should try rebooting their PC and make sure that everyone joined the same network in Radmin.
+如果ping失败，则意味着VPN连接工作不正常。每个人都应尝试重新启动PC并确保每个人都加入了Radmin中的同一网络。
 
-Custom firewalls such as `BitDefender` can block VPN communication - try turning it off.
+像`BitDefender`这样的自定义防火墙可以阻止VPN通信 - 尝试关闭它。
 {% endhint %}
 
-## Ensuring direct connection
+## 确保直接连接
 
-It is important to ensure that you are communicating directly with your friend(s) through Radmin for optimal performance.
+为了获得最佳性能，确保您通过Radmin直接与朋友通信是很重要的。
 
-* Right-click your friend's name in Radmin and click `Properties`.
+* 在Radmin中右键点击您朋友的名称并点击`属性`。
 
 <figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
-* Validate that the Channel type is `TCP/out`. This mean you have a direct connection to this peer.
+* 验证通道类型为`TCP/out`。这意味着您与此对等方有直接连接。
 
 <figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="warning" %}
-If you see `TCP/relay`, then the communication is relayed through Radmin's servers. The performance will be severely degraded. Try disabling any firewall and/or antivirus in your system and reconnect to the network in Radmin.
+如果您看到`TCP/relay`，则通信通过Radmin的服务器中继。性能将严重下降。尝试禁用系统中的任何防火墙和/或防病毒软件，并在Radmin中重新连接到网络。
 {% endhint %}
 
-## Configure your `VPN IP` in Fika
+## 在Fika中配置您的`VPN IP`
 
-* Start `SPT.Server` at least once to generate the configuration files, then close it.
+* 至少启动一次`SPT.Server`以生成配置文件，然后关闭它。
 
 <figure><img src="../.gitbook/assets/https___files.gitbook.com_v0_b_gitbook-x-prod.appspot.com_o_spaces_2FKIBpsnthxy8OSpsWzsDI_2Fuploads_2FlZfa6hVfcUTBztlqMtZ7_2Fhttps___files.gitbook.com_v0_b_gitbook-x-prod.appspot.com_o_spaces_2FKIBpsnthxy8OSpsWzs.png" alt=""><figcaption></figcaption></figure>
 
-* Navigate to `user\mods\fika-server\assets\configs`.
-* Open `fika.jsonc` with your preferred text editor (Notepad++ is recommended).
+* 导航到`user\mods\fika-server\assets\configs`。
+* 使用您首选的文本编辑器打开`fika.jsonc`（推荐使用Notepad++）。
 
 <figure><img src="../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
 
-* Find the `server` section.
-* Change `ip` to `your_vpn_ip`. Make sure to write it inside the quotes.
-* Change `backendIp` to `your_vpn_ip`. Make sure to write it inside the quotes.
+* 找到`server`部分。
+* 将`ip`更改为`your_vpn_ip`。确保在引号内写入。
+* 将`backendIp`更改为`your_vpn_ip`。确保在引号内写入。
 
 <figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
 
-* Save the file and close it.
-* Start `SPT.Launcher`
+* 保存文件并关闭它。
+* 启动`SPT.Launcher`
 
 <figure><img src="../.gitbook/assets/https___files.gitbook.com_v0_b_gitbook-x-prod.appspot.com_o_spaces_2FKIBpsnthxy8OSpsWzsDI_2Fuploads_2F89xf4fwAOWUZlYNbpj1u_2Fimage (1).png" alt=""><figcaption></figcaption></figure>
 
-* Click the `Settings` button.
+* 点击`设置`按钮。
 
 <figure><img src="../.gitbook/assets/https___files.gitbook.com_v0_b_gitbook-x-prod.appspot.com_o_spaces_2FKIBpsnthxy8OSpsWzsDI_2Fuploads_2FqwHM3gxlwjEsrugHTtc0_2Fimage.avif" alt=""><figcaption></figcaption></figure>
 
-* Check the `Developer mode` box.
-* Enter your VPN address in the URL section. DO NOT leave out `https://` and do not add a slash at the end. The URL box should look like this: `https://20.21.22.23:6969`.
+* 选中`Developer Mode`框。
+* 在URL部分输入您的VPN地址。不要省略`https://`，也不要添加结尾斜杠。URL框应该看起来像这样：`https://20.21.22.23:6969`。
 
 <figure><img src="../.gitbook/assets/https___files.gitbook.com_v0_b_gitbook-x-prod.appspot.com_o_spaces_2FKIBpsnthxy8OSpsWzsDI_2Fuploads_2FRJRDafOFXrz8sQBMXNfo_2Fimage.avif" alt=""><figcaption></figcaption></figure>
 
-* Press the arrow on the right corner.
-* You should now be able to create your profile and log in to the server.
-* Start the game.
+* 按右角的箭头。
+* 您现在应该能够创建您的配置文件并登录到服务器。
+* 启动游戏。
 
 <figure><img src="../.gitbook/assets/https___files.gitbook.com_v0_b_gitbook-x-prod.appspot.com_o_spaces_2FKIBpsnthxy8OSpsWzsDI_2Fuploads_2FVhkOgEbLlzyx9kazRxLl_2Fimage.avif" alt=""><figcaption></figcaption></figure>
 
-* Press `F12` when in-game to bring up the configuration manager.
-* Find the `Force IP` and `Force Bind IP` in the `Fika.Core` section of the configuration manager.
-* Set both Force IP and Force Bind IP to `your_vpn_ip`.
+* 在游戏中按`F12`以调出配置管理器。
+* 在配置管理器的`Fika.Core`部分找到`Force IP`和`Force Bind IP`。
+* 将Force IP和Force Bind IP都设置为`your_vpn_ip`。
 
 <figure><img src="../.gitbook/assets/forceip.png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-Note: Players willing to host a raid will also need to set the `Force IP` and `Force Bind IP` in their respective Fika configuration.
+注意：愿意托管突袭的玩家还需要在各自的Fika配置中设置`Force IP`和`Force Bind IP`。
 {% endhint %}
 
-## Hosting a raid
+## 托管突袭
 
-[Click here](../playing-fika.md#hosting-a-raid) to learn how to host a raid.
+[点击此处](../playing-fika.md#hosting-a-raid)了解如何托管突袭。
 
-[Click here](../fika-configuration/) to learn more about additional Fika configurations.
+[点击此处](../fika-configuration/)了解更多关于其他Fika配置的信息。

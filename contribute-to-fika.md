@@ -1,5 +1,5 @@
 ---
-description: Different ways you can contribute to Fika.
+description: 您可以为Fika做出贡献的不同方式。
 icon: code
 layout:
   width: default
@@ -17,18 +17,18 @@ layout:
     visible: true
 ---
 
-# Contribute to Fika
+# 为Fika做贡献
 
-## Development
+## 开发
 
-You can contribute to the development of Project Fika by visiting our [GitHub organization](https://github.com/project-fika). Project Fika consists of multiple components, each with its own repository. Create a pull request and one of our developers will review it. Ensure that you follow the guidelines for code submission.
+您可以通过访问我们的[GitHub组织](https://github.com/project-fika)为Project Fika的开发做出贡献。Project Fika由多个组件组成，每个组件都有自己的存储库。创建一个拉取请求，我们的开发人员之一将对其进行审查。请确保您遵循代码提交的指导原则。
 
-## Translation
+## 翻译
 
-Project Fika is localized by the community at [Crowdin](https://crowdin.com/project/project-fika). Feel free to help us translate it into any available languages!
+Project Fika由社区在[Crowdin](https://crowdin.com/project/project-fika)上进行本地化。欢迎帮助我们将其翻译成任何可用的语言！
 
-## Wiki
+## 维基
 
-You can contribute to the Wiki by submitting a pull request to its [GitHub repository](https://github.com/project-fika/gitbook-wiki). We recommend using [GitBook](https://www.gitbook.com/)'s editor to make your changes. To do this, fork the repository and add it to your GitBook account using GitBook's GitHub Sync integration app, then submit a pull request.
+您可以通过向其[GitHub存储库](https://github.com/project-fika/gitbook-wiki)提交拉取请求来为维基做出贡献。我们建议使用[GitBook](https://www.gitbook.com/)的编辑器进行更改。为此，请派生存储库并使用GitBook的GitHub同步集成应用程序将其添加到您的GitBook账户，然后提交拉取请求。
 
-You can also request to become an editor in our [Discord](https://discord.gg/project-fika). Contact one of the staff member.
+您也可以请求成为我们[Discord](https://discord.gg/project-fika)中的编辑。请联系工作人员之一。

@@ -1,8 +1,6 @@
 ---
 description: >-
-  Instructions for setting up a headless client to host your raids from a
-  separate computer for maximum performance gains. This is the officially
-  supported headless client configuration.
+  设置无头客户端以从单独计算机托管您的突袭以获得最大性能提升的说明。这是官方支持的无头客户端配置。
 hidden: true
 layout:
   width: default
@@ -20,114 +18,114 @@ layout:
     visible: true
 ---
 
-# Remote Headless Client
+# 远程无头客户端
 
 {% hint style="info" %}
-Please make sure you have read everything on the general [Headless Client page](./) first.
+请确保您首先阅读了通用[无头客户端页面](./)上的所有内容。
 {% endhint %}
 
-## Recommended Hardware Requirements
+## 推荐硬件要求
 
-* A dedicated machine for running the headless client.
-  * Most virtual private servers (VPS) will **not** work because they do not provide the performance needed for the headless client.
-* A modern CPU with at least 4 cores @ 4GHz+.
-* 32 GB RAM (16 GB RAM _may_ work but will provide reduced performance due to virtual paging).
-* 50 GB disk space with SSD/NVME drive. **HDD is NOT supported.**
+* 用于运行无头客户端的专用机器。
+  * 大多数虚拟专用服务器（VPS）将**无法**工作，因为它们不提供无头客户端所需的性能。
+* 现代CPU，至少4核心@ 4GHz+。
+* 32 GB RAM（16 GB RAM _可能_能工作，但由于虚拟分页会导致性能降低）。
+* 50 GB磁盘空间，带SSD/NVME驱动器。**不支持HDD。**
 
-## Notes
+## 注意事项
 
-* The installation process below will guide you through the steps to set up the SPT server and headless client on the same machine. It is possible to separate the SPT server and the headless client, but there is no performance benefit, and the steps are more involved. Therefore, this setup will not be covered in this guide.
-* Linux is NOT supported and covered by this article. Visit the dedicated Linux channel in our [Discord](https://discord.gg/project-fika) for assistance.
+* 下面的安装过程将指导您设置在同一台机器上安装SPT服务器和无头客户端。可以将SPT服务器和无头客户端分开，但没有性能优势，而且步骤更复杂。因此，本指南将不涵盖此设置。
+* Linux不受本文支持和涵盖。请访问我们[Discord](https://discord.gg/project-fika)中的专用Linux频道以获得帮助。
 
 ***
 
-## Installation
+## 安装
 
 {% stepper %}
 {% step %}
-### Install Escape From Tarkov using BSG Launcher
+### 使用BSG启动器安装逃离塔科夫
 
-Escape From Tarkov must be installed on the machine/server where you are planning to run the headless client. This is required to ensure that you own the game.&#x20;
+当您计划运行无头客户端的机器/服务器上必须安装逃离塔科夫。这是为了确保您拥有游戏。&#x20;
 
-**Fika will NOT work if you skip this step!**
+**如果您跳过此步骤，Fika将无法工作！**
 {% endstep %}
 
 {% step %}
-### Install [SPT](https://hub.sp-tarkov.com/files/file/672-spt-installer/)
+### 安装[SPT](https://hub.sp-tarkov.com/files/file/672-spt-installer/)
 
-If your SPT server is currently located on a different machine, please copy it to the computer where you are planning to install the headless client. It must contain the full game. If you are unable to copy it due to the size, install SPT on the server using the [SPT Installer](https://hub.sp-tarkov.com/files/file/672-spt-installer/) instead.
+如果您的SPT服务器当前位于不同的机器上，请将其复制到您计划安装无头客户端的计算机上。它必须包含完整游戏。如果由于大小而无法复制，请使用[SPT安装程序](https://hub.sp-tarkov.com/files/file/672-spt-installer/)在服务器上安装SPT。
 
-**Do NOT install SPT in your official Escape From Tarkov folder!**
+**请勿在您的官方逃离塔科夫文件夹中安装SPT！**
 {% endstep %}
 
 {% step %}
-### Download [Fika-Installer](https://github.com/project-fika/Fika-Installer/releases/latest)
+### 下载[Fika-Installer](https://github.com/project-fika/Fika-Installer/releases/latest)
 {% endstep %}
 
 {% step %}
-### Copy `Fika-Installer.exe` to the root of your SPT install folder
+### 将`Fika-Installer.exe`复制到SPT安装文件夹的根目录
 
-Do not copy inside `SPT` folder!
+不要复制到`SPT`文件夹内！
 
 <figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Run `Fika-Installer.exe`
+### 运行`Fika-Installer.exe`
 
-If you get an admin rights prompt, this is normal. `Fika-Installer` requires admin rights to set up the firewall rules.
+如果您收到管理员权限提示，这是正常的。`Fika-Installer`需要管理员权限来设置防火墙规则。
 {% endstep %}
 
 {% step %}
-### Choose `Install Fika`
+### 选择`Install Fika`
 
 <figure><img src="../../.gitbook/assets/image (20) (1).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Confirm installation completion
+### 确认安装完成
 
 <figure><img src="../../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Set URL in [fika.jsonc](../../fika-configuration/server.md) for headless client
+### 为无头客户端在[fika.jsonc](../../fika-configuration/server.md)中设置URL
 
-1. Navigate to `[SPT root folder]\SPT\user\mods\fika-server\assets\configs\`
-   1. If `fika.jsonc` does not exist, run `SPT.Server.exe` from your headless install once and then close it.
-2. Open `fika.jsonc` in a text editor.
-3. Scroll down to the `scripts -> forceIp` setting and change it to the URL that you set up while following [the hosting instructions](../../hosting-a-fika-server/).
-4. Save the file and close the text editor.
+1. 导航到`[SPT根文件夹]\SPT\user\mods\fika-server\assets\configs\`
+   1. 如果`fika.jsonc`不存在，请从您的无头安装中运行一次`SPT.Server.exe`，然后关闭它。
+2. 在文本编辑器中打开`fika.jsonc`。
+3. 向下滚动到`scripts -> forceIp`设置，并将其更改为在按照[托管说明](../../hosting-a-fika-server/)时设置的URL。
+4. 保存文件并关闭文本编辑器。
 
 <div align="left"><figure><img src="../../.gitbook/assets/image (31).png" alt=""><figcaption></figcaption></figure></div>
 {% endstep %}
 
 {% step %}
-### Choose `Advanced options`
+### 选择`Advanced options`
 
 <figure><img src="../../.gitbook/assets/image (5) (1) (1).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Choose `Install Fika Headless`
+### 选择`Install Fika Headless`
 
 <figure><img src="../../.gitbook/assets/image (6) (1) (1).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Choose `Create a new headless profile`
+### 选择`Create a new headless profile`
 
 <figure><img src="../../.gitbook/assets/image (7) (1) (1).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Close `Fika-Installer` when installation is completed
+### 安装完成后关闭`Fika-Installer`
 
 <figure><img src="../../.gitbook/assets/image (8) (1) (1).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Start `SPT.Server.exe`
+### 启动`SPT.Server.exe`
 
 <figure><img src="../../.gitbook/assets/image (10) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -135,86 +133,86 @@ If you get an admin rights prompt, this is normal. `Fika-Installer` requires adm
 {% endstep %}
 
 {% step %}
-### Wait for `Server has started, happy playing` message in console
+### 等待控制台中出现`Server has started, happy playing`消息
 
 <figure><img src="../../.gitbook/assets/image (12) (1) (1).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Start the headless client using `Fika Headless Manager`
+### 使用`Fika Headless Manager`启动无头客户端
 
-The `Fika Headless Manager` will start your headless client.
+`Fika Headless Manager`将启动您的无头客户端。
 
 <figure><img src="../../.gitbook/assets/image (11) (1) (1).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Wait for the headless client to load
+### 等待无头客户端加载
 
-Two console windows will appear after running the script: the `Fika Headless Manager` and the headless client console. **Do not close them**. Wait for the headless client to load. Activity will stop in the console when loading is completed.
+运行脚本后将出现两个控制台窗口：`Fika Headless Manager`和无头客户端控制台。**不要关闭它们**。等待无头客户端加载。加载完成后控制台中的滚动将停止。
 
 <figure><img src="../../.gitbook/assets/image (14) (1) (1).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Start `SPT.Launcher` and your game client
+### 启动`SPT.Launcher`和您的游戏客户端
 
-The headless client is now ready to host a raid. Start Fika (`SPT.Launcher`) on your computer.&#x20;
+无头客户端现已准备好托管突袭。在您的计算机上启动Fika（`SPT.Launcher`）。&#x20;
 
-**Do NOT start SPT.Launcher.exe on the headless client server!**
+**请勿在无头客户端服务器上启动SPT.Launcher.exe！**
 
 <figure><img src="../../.gitbook/assets/image (15) (1) (1).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Host a raid using the headless client
+### 使用无头客户端托管突袭
 
-Navigate the in-game menu like you would normally do to reach the `Raids` menu and click `Host Raid`.
+像平常一样导航游戏内菜单以到达`Raids`菜单并点击`Host Raid`。
 
 <figure><img src="../../.gitbook/assets/image (16) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-Check the `Use Headless Host` box and press `Start`. This will request the headless client to start a raid in the selected location. Wait for the headless client to load the raid.
+勾选`Use Headless Host`框并按`Start`。这将请求无头客户端在选定位置开始突袭。等待无头客户端加载突袭。
 
 <figure><img src="../../.gitbook/assets/image (17) (1) (1).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Start the raid when the headless client is ready
+### 当无头客户端准备好时开始突袭
 
-Your friend(s) can join the headless client's raid when you see this screen. When everybody has joined, press `Start Raid`.
+当您看到此屏幕时，您的朋友可以加入无头客户端的突袭。当每个人都加入后，按`Start Raid`。
 
 <figure><img src="../../.gitbook/assets/image (18) (1) (1).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Done!
+### 完成！
 {% endstep %}
 {% endstepper %}
 
 ***
 
-## Modding
+## 模组
 
-The headless client is very sensitive to modding. Do **NOT** install the same mods you use in Fika. Because the headless client is heavily modified, most mods will likely cause crashes or make it unstable.
+无头客户端对模组很敏感。请**不要**安装您在Fika中使用的相同模组。由于无头客户端经过大量修改，大多数模组可能会导致崩溃或使其不稳定。
 
-**✅ YOU CAN INSTALL:**
+**✅ 您可以安装：**
 
-* AI mods (SAIN)
-* Spawn mods (MOAR, DONUTS)
-* Mods that specifically mention headless client support (That's Lit, UIFixes, etc.)
-* Any mod that reasonably changes in-raid behavior, like entering custom quest zones or having to do with inventory (VCQL, Pack'n'Strap, etc.)
+* AI模组（SAIN）
+* 生成模组（MOAR, DONUTS）
+* 明确提到支持无头客户端的模组（That's Lit, UIFixes等）
+* 任何合理改变突袭内行为的模组，如进入自定义任务区域或与库存有关的模组（VCQL, Pack'n'Strap等）
 
-**❌ DO NOT INSTALL:**
+**❌ 请勿安装：**
 
-* RAM/VRAM cleaner mods (RAM Cleaner, VRAM Cleaner, etc.)
-* Performance mods (DeClutter, etc.)
-* Any other mods not listed in the **YOU CAN INSTALL** section
+* RAM/VRAM清理模组（RAM Cleaner, VRAM Cleaner等）
+* 性能模组（DeClutter等）
+* 未列在**您可以安装**部分中的任何其他模组
 
 ***
 
-## Troubleshooting
+## 故障排除
 
-* If you are crashing or getting errors when joining a headless hosted raid, make sure that Fika is up-to-date for everyone. Verify that you have the latest version of [Fika-Installer](https://github.com/project-fika/Fika-Installer/releases/latest) and use it both in your normal SPT+Fika folder as well as the headless folder to `Update Fika` and `Advanced` -> `Update Fika Headless`.
-* If the `Use Headless Host` checkbox is greyed out, it means that the headless client is unavailable. It could be caused by unsupported mods installed in the headless client, networking issues, or other factors. Note that the headless client can only host one raid at a time. Check `BepInEx/LogOutput.log` for errors, especially warnings about incompatible mods.
-* If your headless client is failing to load, launch it in Graphics mode by pressing `G` during the startup of `Fika Headless Manager` if possible. If launching in Graphics mode is not possible, look in the `<timestamp> errors.log` in the SPT log folder for hints. Often this is caused by having a malfunctioning or invalid plugin, and sometimes also from missing a plugin that is required by one of the mods on the server.
-* See other common issues in [FAQ and Guides](../../faqandguides/) and [Headless Client FAQ and Common Issues](../../faqandguides/headless-client-faq-and-common-issues/)
+* 如果您在加入无头托管的突袭时崩溃或出现错误，请确保每个人都有最新版本的Fika。验证您拥有最新版本的[Fika-Installer](https://github.com/project-fika/Fika-Installer/releases/latest)并在您的常规SPT+Fika文件夹以及无头文件夹中使用它来`Update Fika`和`Advanced` -> `Update Fika Headless`。
+* 如果`Use Headless Host`复选框变灰，这意味着无头客户端不可用。可能是由于在无头客户端中安装了不支持的模组、网络问题或其他因素引起的。请注意，无头客户端一次只能托管一个突袭。检查`BepInEx/LogOutput.log`中的错误，特别是关于不兼容模组的警告。
+* 如果您的无头客户端加载失败，如果可以的话，在`Fika Headless Manager`启动期间按`G`键以图形模式启动。如果无法以图形模式启动，请在SPT日志文件夹中的`<timestamp> errors.log`中查找提示。这通常是由有故障或无效插件引起的，有时也是由于缺少服务器上某个模组所需的插件。
+* 在[常见问题和指南](../../faqandguides/)和[无头客户端常见问题和常见问题](../../faqandguides/headless-client-faq-and-common-issues/)中查看其他常见问题

@@ -1,5 +1,5 @@
 ---
-description: Created by Shynd
+description: 由Shynd创建
 layout:
   width: default
   title:
@@ -16,36 +16,36 @@ layout:
     visible: true
 ---
 
-# Guidance on which mods should be used on the headless client
+# 关于应在无头客户端上使用哪些模组的指导
 
-## Note: The headless client is a _client_ — clients only load things in `BepInEx/`. Any mod that is in `SPT/user/mods/` is loaded only by the backend server, SPT.Server.exe.
+## 注意：无头客户端是一个_客户端_ — 客户端只加载`BepInEx/`中的内容。任何在`SPT/user/mods/`中的模组仅由后端服务器SPT.Server.exe加载。
 
-To expand a bit on what I mean about the difference between a plugin I assume the headless client **needs** vs a plugin I assume the headless client does not need:
+稍微扩展一下我关于无头客户端**需要**的插件与无头客户端不需要的插件之间的区别的含义：
 
-* <mark style="color:$warning;">Does it only have an effect while in stash or hideout? If yes, then it's probably</mark> <mark style="color:$warning;"></mark>_<mark style="color:$warning;">not</mark>_ <mark style="color:$warning;"></mark><mark style="color:$warning;">necessary for the headless client.</mark>
-  * This would be something like QuickSell. It is not necessary to have on the headless client because it only affects in-stash behavior.
-  * Plugins in this category may be fine to leave installed on the headless client and they may cause issues. They are unlikely to _solve_ any issues.
-* <mark style="color:$warning;">Does it only change how information or graphics are displayed, without changing that information? If yes, then it's probably</mark> <mark style="color:$warning;"></mark>_<mark style="color:$warning;">not</mark>_ <mark style="color:$warning;"></mark><mark style="color:$warning;">necessary for the headless client.</mark>
-  * This would include things like MoreCheckmarks, AmandsGraphics, DynamicMaps, ItemSellPrice, et al. These plugins take existing information that is available already in the game client and display it in a different way. They do not add or change any behavior.
-  * Plugins in this category also may be fine to leave installed on the headless client, and they also may cause issues. They are unlikely to _solve_ any issues.
-  * Remember that the headless client is navigating menus automatically to start a raid and finish a raid. Anything that changes menus or patches menus may cause problems.
-* <mark style="color:$warning;">Does it change in-raid behavior in some way? If yes, it's probably necessary.</mark>
-  * This would be something like SAIN, which affects AI behavior, or bot spawn mods, or UIFixes which changes _how inventory behaves_, or anything else that you think _**might**_ have an effect on in-raid behavior.
-  * Plugins in this category are sometimes difficult to spot. Something like UIFixes may not be obvious that it _changes_ inventory behavior, and it may not be apparent to users that the raid host is authoritative on inventory actions.
-  * Some plugins that seem to fall in to this category are simply displaying other ways to trigger vanilla behavior and thus do not need to be on the headless client, but often do not hurt to have installed anyway. Things like ItemContextMenuExtended, for instance, make it so that you can right-click a flashlight to toggle it on/off, but they do not _change_ that behavior, only make it accessible in a new way, and thus are not _required_ to be on the headless client.
+* <mark style="color:$warning;">它是否仅在仓库或藏身处时才有效果？如果是，则它可能</mark> <mark style="color:$warning;"></mark>_<mark style="color:$warning;">不</mark>_ <mark style="color:$warning;"></mark><mark style="color:$warning;">需要用于无头客户端。</mark>
+  * 这类似于QuickSell这样的东西。它不需要在无头客户端上安装，因为它只影响仓库行为。
+  * 此类别的插件可能可以留在无头客户端上安装，但它们可能会引起问题。它们不太可能_解决_任何问题。
+* <mark style="color:$warning;">它是否只改变信息或图形的显示方式，而不改变该信息？如果是，则它可能</mark> <mark style="color:$warning;"></mark>_<mark style="color:$warning;">不</mark>_ <mark style="color:$warning;"></mark><mark style="color:$warning;">需要用于无头客户端。</mark>
+  * 这将包括MoreCheckmarks、AmandsGraphics、DynamicMaps、ItemSellPrice等。这些插件获取游戏客户端中已有的信息并以不同方式显示。它们不会添加或更改任何行为。
+  * 此类别的插件也可能可以留在无头客户端上安装，它们也可能引起问题。它们不太可能_解决_任何问题。
+  * 请记住，无头客户端会自动导航菜单以开始和结束突袭。任何更改或修补菜单的内容都可能导致问题。
+* <mark style="color:$warning;">它是否以某种方式改变突袭内行为？如果是，则它可能是必需的。</mark>
+  * 这将是类似SAIN的东西，影响AI行为，或机器人生成模组，或UIFixes（更改_库存行为方式_），或任何您认为_**可能**_对突袭内行为有影响的其他内容。
+  * 此类别的插件有时难以识别。像UIFixes这样的内容可能并不明显地_改变_库存行为，用户可能不会意识到突袭主机对库存操作具有权威性。
+  * 一些似乎属于此类别的插件只是显示触发原版行为的其他方式，因此不需要在无头客户端上，但通常安装也不会有害。例如，ItemContextMenuExtended使您可以右键点击手电筒以切换其开关，但它们不会_改变_该行为，只是以新方式使其可访问，因此_不需要_在无头客户端上。
 
-There are some plugins, like SearchOpenContainers, that are difficult to discern where they need to be or if they'd cause issues. One might reasonably assume that searching a container that is open is changing behavior so it needs to be installed for the headless client; one might also reasonably assume that searching an open container is entirely client-side and since the headless client character will never be searching containers it is not necessary. Plugins that feel ambiguous should be tested to make sure they do not cause issues one way or another.&#x20;
+有一些插件，如SearchOpenContainers，很难判断它们需要在哪里或是否会引起问题。人们可能合理地假设搜索一个开放的容器是在改变行为，所以需要为无头客户端安装；人们也可能合理地假设搜索一个开放的容器完全是客户端的事情，由于无头客户端角色永远不会搜索容器，所以这不是必需的。感觉模糊的插件应该进行测试，以确保它们不会引起任何问题。&#x20;
 
-At the end of the day, there is often no _benefit_ to having plugins that do not improve the experience for the headless client to be installed on the headless client, but often there's also no issues. Sometimes more plugins does cause more processing overhead and thus lower in-raid FPS. If that doesn't matter to you, install everything and only remove plugins that cause problems! If that does matter, be selective and test for yourself.&#x20;
+归根结底，将不会改善无头客户端体验的插件安装在无头客户端上通常没有_好处_，但通常也不会有问题。有时更多插件确实会增加更多处理开销，从而降低突袭内FPS。如果这对您不重要，请安装所有内容，只删除引起问题的插件！如果这很重要，请选择并自行测试。&#x20;
 
-I personally use the above logic as a starting point for testing. I remove any plugins that I'm very sure are not necessary and leave in any plugins that I am not sure about, and then I run raids and specifically test plugin behaviors. I look through logs for errors. If everything is working, I move on. Thus far, this has served me well.
+我个人将上述逻辑作为测试的起点。我会移除任何我非常确定不需要的插件，并保留任何我不确定的插件，然后运行突袭并特别测试插件行为。我查看日志中的错误。如果一切正常，我就继续。到目前为止，这对我很有帮助。
 
-Here is an illustration of the modding setup of headless client vs Fika instance:
+以下是无头客户端与Fika实例的模组设置说明：
 
-**Headless client**
+**无头客户端**
 
 <figure><img src="../../.gitbook/assets/image (22) (1).png" alt=""><figcaption></figcaption></figure>
 
-**Fika instance**
+**Fika实例**
 
 <figure><img src="../../.gitbook/assets/image (23) (1).png" alt=""><figcaption></figcaption></figure>

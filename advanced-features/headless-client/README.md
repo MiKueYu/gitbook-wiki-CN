@@ -1,7 +1,6 @@
 ---
 description: >-
-  General information about the Fika headless client feature for creating a
-  dedicated raid host instance of SPT.
+  关于Fika无头客户端功能的一般信息，用于创建专用的SPT突袭主机实例。
 layout:
   width: default
   title:
@@ -18,51 +17,51 @@ layout:
     visible: true
 ---
 
-# Headless Client
+# 无头客户端
 
-The headless client plugin is an exclusive Fika feature that allows you to host a raid on a separate Escape From Tarkov instance. You are able to offload the AI calculation and other resource-intensive task to improve game play performance. When hosting the raid on a **separate PC** from where you play, FPS gains are usually around 25% to 50% depending on your computer specifications and amount of bots in the game.
+无头客户端插件是Fika的独占功能，允许您在单独的逃离塔科夫实例上托管突袭。您能够卸载AI计算和其他资源密集型任务以提高游戏性能。当在与您玩游戏的**单独PC**上托管突袭时，FPS提升通常在25%到50%之间，具体取决于您的计算机规格和游戏中机器人的数量。
 
 {% hint style="warning" %}
-Please note that there is some technical knowledge required to achieve this. If you absolutely have no experience, you will have a hard time.
+请注意，这需要一些技术知识。如果您完全没有经验，您将会有困难。
 {% endhint %}
 
-### Specifications
+### 规格
 
-* The headless client is basically another SPT+Fika client instance that will automatically host raids. All players becomes clients (including the player who clicked `HOST RAID`).
-* Graphic rendering is disabled to make the headless client as lightweight as possible. However, the headless client is **NOT** a true headless server. It still requires all the game files and a pretty hefty amount of RAM to work (especially for bigger maps such as Streets or Lighthouse).
-* It is **strongly** recommended to run the headless client on a separate physical machine. The headless client will NOT work on a VPS. If you really wish to use a paid host, rent a dedicated server.
-* A graphic card is NOT required to run the headless client, however it may be helpful for configuring mods.
+* 无头客户端基本上是另一个SPT+Fika客户端实例，它将自动托管突袭。所有玩家都成为客户端（包括点击`托管突袭`的玩家）。
+* 禁用了图形渲染以使无头客户端尽可能轻量级。但是，无头客户端**不是**真正的无头服务器。它仍然需要所有游戏文件和相当大量的RAM才能工作（特别是对于较大的地图，如街道或灯塔）。
+* 强烈建议在单独的物理机器上运行无头客户端。无头客户端将无法在VPS上工作。如果您真的想使用付费主机，请租用专用服务器。
+* 运行无头客户端**不需要**显卡，但可能有助于配置模组。
 
 {% hint style="danger" %}
-Using a headless client can create a situation where certain mods either cannot work entirely or become more complicated to properly configure. It is therefore much easier to set up a headless client **before adding any mods** to reduce issues.
+使用无头客户端可能会导致某些模组完全无法工作或变得更难正确配置。因此，在添加任何模组**之前**设置无头客户端要容易得多，以减少问题。
 
-If you run into problems during the headless client setup process, consider starting over with a completely fresh SPT+Fika install without any other mods first.
+如果您在无头客户端设置过程中遇到问题，请考虑首先使用完全新鲜的SPT+Fika安装，没有任何其他模组重新开始。
 {% endhint %}
 
-More information, guides, and common fixes can be found in the [Headless Client FAQ and Common Issues](../../faqandguides/headless-client-faq-and-common-issues/) section.
+更多信息、指南和常见修复方法可以在[无头客户端常见问题和常见问题](../../faqandguides/headless-client-faq-and-common-issues/)部分找到。
 
-### Choose Headless Client Implementation
+### 选择无头客户端实现
 
 {% tabs %}
-{% tab title="Headless Client on a Separate PC" %}
+{% tab title="在单独PC上的无头客户端" %}
 {% hint style="success" %}
-This is the intended use case for the Headless Client feature and provides the largest and most consistent performance increase.
+这是无头客户端功能的预期用例，并提供最大和最一致的性能提升。
 {% endhint %}
 
-Both SPT.Server and a Headless Client will run on a separate PC independent of your gaming PC. This means you can utilize your gaming PC in any way you wish, including restarting it, without affecting any other players.
+SPT.Server和无头客户端都将在独立于您的游戏PC的单独PC上运行。这意味着您可以根据需要以任何方式使用您的游戏PC，包括重新启动，而不会影响任何其他玩家。
 
-<h4 align="center"><a href="remote-headless-client.md" class="button primary" data-icon="network-wired">Remote Headless Client Instructions</a></h4>
+<h4 align="center"><a href="remote-headless-client.md" class="button primary" data-icon="network-wired">远程无头客户端说明</a></h4>
 {% endtab %}
 
-{% tab title="Local Headless / Headless on Same PC" %}
+{% tab title="本地无头/同一PC上的无头" %}
 {% hint style="danger" %}
-**This is not the intended use case for the Headless Client feature! Please read the warnings at the top of the next page. Support is limited.**
+**这不是无头客户端功能的预期用例！请阅读下一页顶部的警告。支持有限。**
 {% endhint %}
 
-If your PC can handle running two EFT clients at the same time, you _may_ see a reduction in stuttering or an increase in performance by running a headless client on the same PC where you are playing SPT. Any performance increase is entirely dependent on your hardware and not guaranteed.
+如果您的PC可以同时处理两个EFT客户端，通过在您玩SPT的同一PC上运行无头客户端，您_可能_会看到卡顿减少或性能提升。任何性能提升完全取决于您的硬件，不保证。
 
-#### <mark style="color:$warning;">Some users see performance degradation. Continue at your own risk.</mark>
+#### <mark style="color:$warning;">一些用户看到性能下降。自行承担风险继续。</mark>
 
-<h4 align="center"><a href="local-headless-client.md" class="button primary" data-icon="computer">Local Headless Client Instructions</a></h4>
+<h4 align="center"><a href="local-headless-client.md" class="button primary" data-icon="computer">本地无头客户端说明</a></h4>
 {% endtab %}
 {% endtabs %}

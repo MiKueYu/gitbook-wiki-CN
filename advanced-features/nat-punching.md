@@ -1,4 +1,4 @@
----
+﻿---
 description: Step-by-step process for setting up a dedicated SPT server with NAT punching.
 layout:
   width: default
@@ -18,24 +18,22 @@ layout:
 
 # NAT Punching
 
-## What is NAT punching?
+## 浠€涔堟槸NAT绌块€忥紵
 
-NAT punching is a [NAT traversal technique](https://en.wikipedia.org/wiki/NAT_traversal) that allows two devices located behind separate routers to establish a direct peer-to-peer connection. It is particularly useful in cases where port forwarding is not possible due to ISP or network restrictions.
-
-However, NAT punching is not supported on all routers. For instance, **symmetric NAT** routers often prevent successful NAT punching due to the way they handle external port mappings.
-
+NAT绌块€忔槸涓€绉峓NAT绌胯秺鎶€鏈痌(https://en.wikipedia.org/wiki/NAT_traversal)锛屽厑璁镐綅浜庝笉鍚岃矾鐢卞櫒鍚庨潰鐨勪袱涓澶囧缓绔嬬洿鎺ョ殑鐐瑰鐐硅繛鎺ャ€傚湪鐢变簬ISP鎴栫綉缁滈檺鍒惰€屾棤娉曡繘琛岀鍙ｈ浆鍙戠殑鎯呭喌涓嬶紝杩欑壒鍒湁鐢ㄣ€?
+浣嗘槸锛屽苟闈炴墍鏈夎矾鐢卞櫒閮芥敮鎸丯AT绌块€忋€備緥濡傦紝**瀵圭ОNAT**璺敱鍣ㄩ€氬父浼氶樆姝㈡垚鍔熺殑NAT绌块€忥紝鍥犱负瀹冧滑澶勭悊澶栭儴绔彛鏄犲皠鐨勬柟寮忋€?
 ## How does it work?
 
-A public server listens for incoming connections from clients and records their external IP addresses and ports. It then introduces each client by sharing the other’s external IP address. For example, `Client 1` receives `Client 2`’s external IP address, and vice versa.
+A public server listens for incoming connections from clients and records their external IP addresses and ports. It then introduces each client by sharing the other鈥檚 external IP address. For example, `Client 1` receives `Client 2`鈥檚 external IP address, and vice versa.
 
-This is when NAT punching occurs: upon receiving `Client 2`’s IP address, `Client 1` begins sending multiple packets (the “punching”) to `Client 2`. At the same time, `Client 2` sends packets to `Client 1`, creating a routing entry in both clients’ routers.
+This is when NAT punching occurs: upon receiving `Client 2`鈥檚 IP address, `Client 1` begins sending multiple packets (the 鈥減unching鈥? to `Client 2`. At the same time, `Client 2` sends packets to `Client 1`, creating a routing entry in both clients鈥?routers.
 
 At this point, both routers allow communication through this specific route, which can then be leveraged to host a `Fika` raid.
 
 ## Requirements
 
 * The SPT server must be hosted on an externally accessible machine, such as a VPS.
-* Both the raid host and any players connecting via NAT punching must use a router that supports Full-Cone NAT, as this type is required for proper connectivity. You can check your router’s NAT type by searching online for your specific router model.
+* Both the raid host and any players connecting via NAT punching must use a router that supports Full-Cone NAT, as this type is required for proper connectivity. You can check your router鈥檚 NAT type by searching online for your specific router model.
 
 ## Notes
 
@@ -49,7 +47,7 @@ This guide covers the installation process for Windows only. Linux is not covere
 
 A publicly accessible server is required for NAT punching. It is recommended to rent an affordable Windows-based VPS to host the `SPT Server`; providers listed on [**LowEndBox**](https://lowendbox.com/) are a good starting point for low-cost options.
 
-If you are uncertain whether NAT punching will work with your network configuration, you can provision a temporary VPS using [**Kamatera**](https://www.kamatera.com/), which offers hourly billing — making it a cost-effective solution for testing.
+If you are uncertain whether NAT punching will work with your network configuration, you can provision a temporary VPS using [**Kamatera**](https://www.kamatera.com/), which offers hourly billing 鈥?making it a cost-effective solution for testing.
 {% endstep %}
 
 {% step %}
@@ -183,14 +181,9 @@ Start the raid when all players are connected and ready to go.
 {% endstep %}
 {% endstepper %}
 
-## Headless client
+## 鏃犲ご瀹㈡埛绔?
+瑕佷负`鏃犲ご瀹㈡埛绔痐鍚敤NAT绌块€忥細
 
-To enable NAT punching for the `headless client`:
-
-* Make sure you followed all the steps above.
-* Navigate to `BepInEx\config` of your `headless client`.
-* Open `com.fika.core.cfg` with your preferred text editor.
-* Search for the parameter `Use NAT Punching` and set to `true`.
-* Save and close the text editor.
-
+* 纭繚鎮ㄥ凡閬靛惊涓婅堪鎵€鏈夋楠ゃ€?* 瀵艰埅鍒癭鏃犲ご瀹㈡埛绔痐鐨刞BepInEx\config`銆?* 浣跨敤鎮ㄩ閫夌殑鏂囨湰缂栬緫鍣ㄦ墦寮€`com.fika.core.cfg`銆?* 鎼滅储鍙傛暟`Use NAT Punching`骞跺皢鍏惰缃负`true`銆?* 淇濆瓨骞跺叧闂枃鏈紪杈戝櫒銆?
 <figure><img src="../.gitbook/assets/image (47).png" alt=""><figcaption></figcaption></figure>
+

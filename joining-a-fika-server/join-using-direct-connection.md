@@ -1,38 +1,38 @@
 ---
-description: Step-by-step process for joining a Fika server.
+description: 加入Fika服务器的逐步过程。
 ---
 
-# Join using direct connection
+# 使用直接连接加入
 
 {% hint style="info" %}
-If your group is port forwarding, you will need the server host to send you their Public/WAN IPv4. This can be found with services like whatismyip.com or portchecker.co.
+如果您的群组正在使用端口转发，您需要服务器主机向您发送他们的公共/WAN IPv4。这可以通过whatismyip.com或portchecker.co等服务找到。
 {% endhint %}
 
-* Launch `SPT.Launcher`
+* 启动`SPT.Launcher`
 
 <figure><img src="../.gitbook/assets/https___files.gitbook.com_v0_b_gitbook-x-prod.appspot.com_o_spaces_2FKIBpsnthxy8OSpsWzsDI_2Fuploads_2F89xf4fwAOWUZlYNbpj1u_2Fimage (3).png" alt=""><figcaption></figcaption></figure>
 
-* Click the `Settings` button.
+* 点击`设置`按钮。
 
 <figure><img src="../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
 
-* Check the `Developer Mode` box.
+* 选中`Developer Mode`框。
 
 <figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-* Enter the host's IP address in the URL section. **DO NOT** leave out `https://`, do not forget to append the port `:6969` and do not add a slash at the end. The URL box should look like this: `https://20.21.22.23:6969`
+* 在URL部分输入主机的IP地址。**不要**省略`https://`，不要忘记添加端口`:6969`，不要在末尾添加斜杠。URL框应该看起来像这样：`https://20.21.22.23:6969`
 
 <figure><img src="../.gitbook/assets/image (5) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-* Press the arrow on the right corner.
+* 按右角的箭头。
 
 <figure><img src="../.gitbook/assets/image (6) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-* You should now be able to create your profile and log in to the server.
-* Start the game.
+* 您现在应该能够创建您的配置文件并登录到服务器。
+* 启动游戏。
 
 <figure><img src="../.gitbook/assets/https___files.gitbook.com_v0_b_gitbook-x-prod.appspot.com_o_spaces_2FKIBpsnthxy8OSpsWzsDI_2Fuploads_2FVhkOgEbLlzyx9kazRxLl_2Fimage (2).avif" alt=""><figcaption></figcaption></figure>
 
-## Joining a raid
+## 加入突袭
 
-* [Click here](../playing-fika.md#joining-a-raid) to learn how to join a raid.
+* [点击此处](../playing-fika.md#joining-a-raid)了解如何加入突袭。

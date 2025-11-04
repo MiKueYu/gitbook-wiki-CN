@@ -1,98 +1,98 @@
 ---
-description: Step-by-step process for joining a Fika server using a VPN client.
+description: 使用VPN客户端加入Fika服务器的逐步过程。
 ---
 
-# Join using a VPN
+# 使用VPN加入
 
-This guide will use Radmin as the VPN client. It is able to establish a direct connection if your network allows it, providing the best performance possible.
+本指南将使用Radmin作为VPN客户端。如果您的网络允许，它能够建立直接连接，提供最佳可能的性能。
 
 {% hint style="warning" %}
-Free VPNs services are known to cause performance or connectivity problems, so use at your own risk. The officially supported way of playing Fika is with port forwarding. We will not provide support for issues caused by VPN services.
+免费VPN服务已知会导致性能或连接问题，因此使用风险自负。官方支持的玩Fika的方式是使用端口转发。我们不会为VPN服务引起的问题提供支持。
 
-Custom firewalls such as **BitDefender** may also block your connection while playing. Make sure that you allow the connection or temporarily disable it while playing!
+像**BitDefender**这样的自定义防火墙也可能在游戏时阻止您的连接。请确保允许连接或在游戏时临时禁用它！
 
-You may also experience issues if you are using another VPN service, even if it is disabled. If you have problems, consider uninstalling any other virtual network adapters.
+如果您使用另一个VPN服务，即使已禁用，您也可能会遇到问题。如果您有问题，请考虑卸载任何其他虚拟网络适配器。
 {% endhint %}
 
-## Install the Radmin VPN client
+## 安装Radmin VPN客户端
 
-* Navigate to the [Radmin website](https://www.radmin-vpn.com/) and download the Radmin VPN client.
-* Run the installer and proceed with the installation steps.
-* Reboot your computer. This is important to ensure that the virtual network adapter is correctly installed. **Do not skip this step!**
-* Open Radmin VPN client from the taskbar or from the start menu.
-* Click `Join network`.
+* 导航到[Radmin网站](https://www.radmin-vpn.com/)并下载Radmin VPN客户端。
+* 运行安装程序并继续安装步骤。
+* 重新启动计算机。这对于确保虚拟网络适配器正确安装很重要。**不要跳过此步骤！**
+* 从任务栏或从开始菜单打开Radmin VPN客户端。
+* 点击`加入网络`。
 
 <figure><img src="../.gitbook/assets/image (48).png" alt=""><figcaption></figcaption></figure>
 
-* Enter the network name and password used by the host.
+* 输入主机使用的网络名称和密码。
 
 <figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
-* You should now be able to see the list of connected peers including the host.
+* 您现在应该能够看到连接对等方列表，包括主机。
 
 <figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
-* Go to `System` -> `Firewall Exceptions` and click  `Allow All Apps`.
+* 转到`系统`->`防火墙例外`并点击`允许所有应用程序`。
 
 <figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
-## Testing connectivity
+## 测试连接
 
-* Right-click the host's name in Radmin and click `Ping`.
+* 在Radmin中右键点击主机名称并点击`Ping`。
 
 <figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
-* Close the command prompt when ping is successful.
+* Ping成功时关闭命令提示符。
 
 {% hint style="warning" %}
-If the ping fails then it means that the VPN is not working correctly. Everyone should try rebooting their PC and make sure that everyone joined the same network in Radmin.
+如果ping失败，则意味着VPN工作不正常。每个人都应尝试重新启动PC并确保每个人都加入了Radmin中的同一网络。
 
-Custom firewalls such as `BitDefender` can block VPN communication - try turning it off.
+像`BitDefender`这样的自定义防火墙可以阻止VPN通信 - 尝试关闭它。
 {% endhint %}
 
-## Ensuring direct connection
+## 确保直接连接
 
-It is important to ensure that you are communicating directly with your friend(s) through Radmin for optimal performance.
+为了获得最佳性能，确保您通过Radmin直接与朋友通信是很重要的。
 
-* Right-click the host's name in Radmin and click `Properties`.
+* 在Radmin中右键点击主机名称并点击`属性`。
 
 <figure><img src="../.gitbook/assets/https___files.gitbook.com_v0_b_gitbook-x-prod.appspot.com_o_spaces_2FKIBpsnthxy8OSpsWzsDI_2Fuploads_2FzCgqmu3LxK8ZdsRiLKjm_2Fimage.avif" alt=""><figcaption></figcaption></figure>
 
-* Validate that the Channel type is `TCP/out`. This mean you have a direct connection to this peer.
+* 验证通道类型为`TCP/out`。这意味着您与此对等方有直接连接。
 
 <figure><img src="../.gitbook/assets/https___files.gitbook.com_v0_b_gitbook-x-prod.appspot.com_o_spaces_2FKIBpsnthxy8OSpsWzsDI_2Fuploads_2FcYerBNYv2Eeg8Sz1TYL4_2Fimage.png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="warning" %}
-If you see `TCP/relay`, then the communication is relayed through Radmin's servers. The performance will be severely degraded. Try disabling any firewall and/or antivirus in your system and reconnect to the network in Radmin.
+如果您看到`TCP/relay`，则通信通过Radmin的服务器中继。性能将严重下降。尝试禁用系统中的任何防火墙和/或防病毒软件，并在Radmin中重新连接到网络。
 {% endhint %}
 
-## Configure SPT Launcher
+## 配置SPT启动器
 
-* Launch `SPT.Launcher`
+* 启动`SPT.Launcher`
 
 <figure><img src="../.gitbook/assets/https___files.gitbook.com_v0_b_gitbook-x-prod.appspot.com_o_spaces_2FKIBpsnthxy8OSpsWzsDI_2Fuploads_2F89xf4fwAOWUZlYNbpj1u_2Fimage.png" alt=""><figcaption></figcaption></figure>
 
-* Click the `Settings` button.
+* 点击`设置`按钮。
 
 <figure><img src="../.gitbook/assets/image (29).png" alt=""><figcaption></figcaption></figure>
 
-* Check the `Developer Mode` box.
+* 选中`Developer Mode`框。
 
 <figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-* Enter the host's VPN address in the URL section. **DO NOT** leave out `https://`, do not forget to append the port `:6969` and do not add a slash at the end. The URL box should look like this: `https://20.21.22.23:6969`.
+* 在URL部分输入主机的VPN地址。**不要**省略`https://`，不要忘记添加端口`:6969`，不要在末尾添加斜杠。URL框应该看起来像这样：`https://20.21.22.23:6969`。
 
 <figure><img src="../.gitbook/assets/image (5) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-* Press the arrow on the right corner.
+* 按右角的箭头。
 
 <figure><img src="../.gitbook/assets/image (4) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-* You should now be able to create your profile and log in to the server.
-* Start the game.
+* 您现在应该能够创建您的配置文件并登录到服务器。
+* 启动游戏。
 
 <figure><img src="../.gitbook/assets/https___files.gitbook.com_v0_b_gitbook-x-prod.appspot.com_o_spaces_2FKIBpsnthxy8OSpsWzsDI_2Fuploads_2FVhkOgEbLlzyx9kazRxLl_2Fimage (1).avif" alt=""><figcaption></figcaption></figure>
 
-## Joining a raid
+## 加入突袭
 
-* [Click here](../playing-fika.md#joining-a-raid) to learn how to join a raid.
+* [点击此处](../playing-fika.md#joining-a-raid)了解如何加入突袭。

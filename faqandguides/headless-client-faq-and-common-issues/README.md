@@ -15,83 +15,83 @@ layout:
     visible: true
 ---
 
-# Headless Client FAQ and Common Issues
+# 无头客户端常见问题和常见问题
 
-### :question:FikaHeadlessManager displays an error on start
+### :question:FikaHeadlessManager在启动时显示错误
 
-* **Error**: <mark style="color:red;">**Could not reach SPT.Server at \<URL> Please ensure SPT.Server is running and accessible.**</mark>
-  * FikaHeadlessManager is unable to verify the server is running.\
+* **错误**: <mark style="color:red;">**无法访问 \<URL> 上的 SPT.Server 请确保 SPT.Server 正在运行并可访问。**</mark>
+  * FikaHeadlessManager无法验证服务器正在运行。\
     \
-    Check that SPT.Server is running and accessible using your SPT.Launcher; verify that you can connect and launch your game like normal.\
+    检查SPT.Server是否正在运行并可通过您的SPT.Launcher访问；验证您可以像平常一样连接并启动游戏。\
     \
-    In the root folder of your headless install, find `HeadlessConfig.json` and open it in a text editor. Verify that the URL is correct and is pointing to where the headless client can access SPT.Server.
-* **Error:&#x20;**<mark style="color:red;">**Could not access \<URL> Ensure Fika Server mod is installed. Please review the installation process in the documentation.**</mark>
-  * FikaHeadlessManager is unable to verify that Fika is fully installed on the server to which it is connecting.\
+    在无头安装的根文件夹中，找到`HeadlessConfig.json`并在文本编辑器中打开它。验证URL是正确的，并指向无头客户端可以访问SPT.Server的位置。
+* **错误:&#x20;**<mark style="color:red;">**无法访问 \<URL> 确保已安装Fika服务器模组。请查看文档中的安装过程。**</mark>
+  * FikaHeadlessManager无法验证Fika在它连接的服务器上已完全安装。\
     \
-    Ensure you have followed all the steps for [Installing Fika](../../installing-fika/) in the folder where you are running SPT.Server.
+    确保您已按照在运行SPT.Server的文件夹中[安装Fika](../../installing-fika/)的所有步骤。
 
 ***
 
-### :question:We cannot connect to a headless client hosted raid or we are getting an error about ensuring ports are open
+### :question:我们无法连接到无头客户端托管的突袭，或者我们收到了关于确保端口已打开的错误
 
-The headless client needs to be able to accept incoming connections on the raid port configured in `<Headless Folder>/BepInEx/config/com.fika.core.cfg` -> `Network` -> `Port` (default 25565/udp).
+无头客户端需要能够在`<Headless Folder>/BepInEx/config/com.fika.core.cfg` -> `Network` -> `Port`（默认25565/udp）中配置的突袭端口上接受传入连接。
 
-If you are port forwarding, the port needs to be forwarded to the PC where the headless client is running. If you are using a VPN, the PC where the headless client is running must be connected to the same VPN and both `Force IP` and `Force Bind IP` must be configured in `com.fika.core.cfg`.
+如果您正在使用端口转发，该端口需要转发到运行无头客户端的PC。如果您正在使用VPN，运行无头客户端的PC必须连接到同一VPN，并且必须在`com.fika.core.cfg`中配置`Force IP`和`Force Bind IP`。
 
-See [this FAQ entry](../#if-you-are-using-headless-client) for more information.
+更多信息请参见[此常见问题条目](../#if-you-are-using-headless-client)。
 
 ***
 
-### :question:How do I change the name of the headless client that is displayed when hosting a raid?
+### :question:如何更改托管突袭时显示的无头客户端名称？
 
-1. Open [fika.jsonc](../../fika-configuration/server.md) in a text editor.
-2. Find the `headless` -> `profiles` -> `aliases` section.
-3.  Add one line per headless client in the format `"ID": "Alias"`
+1. 在文本编辑器中打开[fika.jsonc](../../fika-configuration/server.md)。
+2. 找到`headless` -> `profiles` -> `aliases`部分。
+3.  为每个无头客户端添加一行，格式为`"ID": "Alias"`
 
-    1. The `ID` is the profile ID of the headless character profile for which you wish to change the name.
-    2. You can find the profile ID by opening `HeadlessConfig.json` in a text editor.
-    3. If you are adding multiple profiles, each line needs to end in a comma `,` except the last line.
+    1. `ID`是您希望更改名称的无头角色配置文件的配置文件ID。
+    2. 您可以在文本编辑器中打开`HeadlessConfig.json`来找到配置文件ID。
+    3. 如果您添加多个配置文件，每行都需要以逗号`,`结尾，除了最后一行。
 
     <div align="left" data-full-width="false"><figure><img src="../../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure></div>
-4. Save changes to `fika.jsonc` and close the text editor.
-5. Restart SPT.Server.
+4. 保存对`fika.jsonc`的更改并关闭文本编辑器。
+5. 重启SPT.Server。
 
 ***
 
-### :question:Does performance of the headless client matter?
+### :question:无头客户端的性能是否重要？
 
-Yes, to a point. Performance of the headless client matters insofar as the headless client must stay **above 30 FPS** during all raid scenarios.
+是的，某种程度上是。无头客户端的性能很重要，只要无头客户端在所有突袭场景中必须保持**高于30 FPS**。
 
-To test for this, connect to a headless client hosted raid and, once you have spawned in, open the in-game console on your game client (default key is `~`), enter command `debug t`, and then press Enter.
+要测试这一点，请连接到无头客户端托管的突袭，并在生成后，在您的游戏客户端上打开游戏内控制台（默认键是`~`），输入命令`debug t`，然后按Enter。
 
-This will open a debug window that shows the amount of bots spawned, your ping/RTT, and also the 'Server FPS' which is the FPS of the headless client. Play through the raid, get into fights, throw grenades, etc, and keep an eye on the Server FPS value. As long as it stays in the 30s or above, you should not experience any issues.
+这将打开一个调试窗口，显示生成的机器人数量、您的ping/RTT，以及'服务器FPS'，即无头客户端的FPS。在整个突袭中游玩，参与战斗，投掷手榴弹等，并密切关注服务器FPS值。只要它保持在30以上，您就不应该遇到任何问题。
 
-If it is dipping into the 20s or teens, you will likely experience issues with AI acting strange and physics objects (such as grenades) teleporting or moving in slow-motion. Reduce the number of bots spawned or the number of mods in use to bring performance back up above the important 30 FPS threshold.
+如果它下降到20多或十几，您可能会遇到AI行为异常和物理对象（如手榴弹）传送或缓慢移动的问题。减少生成的机器人数量或使用的模组数量，以使性能回到重要的30 FPS阈值以上。
 
-If performance dips below 30 FPS even with no other mods, your PC is likely not strong enough to host a headless client. If you see the FPS value stuck at 59, that is expected behavior and is not indicative of a problem.
+如果即使没有任何其他模组，性能也下降到30 FPS以下，您的PC可能不够强大，无法托管无头客户端。如果您看到FPS值卡在59，这是预期行为，不表示有问题。
 
 <figure><img src="../../.gitbook/assets/image (49).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
-### :question:I get an error about "A patch in SPT.CustomPlugin FAILED"
+### :question:我收到关于"SPT.CustomPlugin中的补丁失败"的错误
 
-The error `A patch in SPTCustomPlugin FAILED. The type initializer for 'SPT.Custom.Patches.CustomAiPatch'...` should mostly be avoided with latest versions of FikaHeadlessManager. Make sure you have the latest version by re-running Fika-Installer in your headless client install folder and choosing `Advanced` -> `Update Fika Headless`.
+错误`SPTCustomPlugin中的补丁失败。'SPT.Custom.Patches.CustomAiPatch'的类型初始值设定项...`应该在最新版本的FikaHeadlessManager中大部分避免。通过在无头客户端安装文件夹中重新运行Fika-Installer并选择`Advanced` -> `Update Fika Headless`来确保您拥有最新版本。
 
-If you are still getting this error even with the latest FikaHeadlessManager, likely something is blocking your headless client `EscapeFromTarkov.exe` specifically from connecting to the server, such as a VPN or firewall.
+即使使用最新的FikaHeadlessManager，如果您仍然收到此错误，可能有什么东西阻止了您的无头客户端`EscapeFromTarkov.exe`专门连接到服务器，比如VPN或防火墙。
 
 <figure><img src="../../.gitbook/assets/image (52).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="danger" %}
-#### Ensure SPT.Server is running and able to accept connections
+#### 确保SPT.Server正在运行并能够接受连接
 
-Test connectivity using SPT.Launcher: make sure you can launch the game and reach your stash and access traders.
+使用SPT.Launcher测试连接：确保您可以启动游戏并到达您的仓库并访问商人。
 
-If your SPT.Launcher is not able to connect to your server, figure out why and address that issue first. If the server is currently running but SPT.Launcher cannot connect, revisit the [Hosting a Fika server](../../hosting-a-fika-server/) instructions.
+如果您的SPT.Launcher无法连接到您的服务器，请找出原因并首先解决该问题。如果服务器当前正在运行但SPT.Launcher无法连接，请重新查看[托管Fika服务器](../../hosting-a-fika-server/)说明。
 
-**NOTE**: the headless client **does not replace SPT.Server**. The backend server is required to be running at all times.
+**注意**：无头客户端**不会替换SPT.Server**。后端服务器需要始终运行。
 {% endhint %}
 
-If you have already generated `HeadlessConfig.json` and it is in the root directory of your headless install, open it in a text editor and change the URL to match how you connect to your server. This may include a VPN IP or the public IP of the server. Save the changes to the file and restart `FikaHeadlessManager.exe`
+如果您已经生成了`HeadlessConfig.json`并且它在无头安装的根目录中，请在文本编辑器中打开它并将URL更改为与您连接到服务器的方式相匹配。这可能包括VPN IP或服务器的公共IP。保存对文件的更改并重新启动`FikaHeadlessManager.exe`
 
-If you have not generated `HeadlessConfig.json` or the headless profile yet, revisit the [steps for installing the Headless client](../../advanced-features/headless-client/remote-headless-client.md) and pay close attention to the [step about editing `fika.jsonc`](../../advanced-features/headless-client/remote-headless-client.md#optional-set-url-in-fika.jsonc)
+如果您尚未生成`HeadlessConfig.json`或无头配置文件，请重新查看[安装无头客户端的步骤](../../advanced-features/headless-client/remote-headless-client.md)并密切关注[关于编辑`fika.jsonc`的步骤](../../advanced-features/headless-client/remote-headless-client.md#optional-set-url-in-fika.jsonc)

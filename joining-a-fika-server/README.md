@@ -1,29 +1,29 @@
 ---
-description: Getting started with joining a Fika server.
+description: 开始加入Fika服务器。
 icon: right-to-bracket
 ---
 
-# Joining a Fika server
+# 加入Fika服务器
 
-## Getting started
+## 入门
 
-This section is dedicated for setting up Fika to join a server. The server owner must have followed all the steps in the [Hosting a Fika server](../hosting-a-fika-server/) section first before you follow the steps below.
+本节专门介绍设置Fika以加入服务器。服务器所有者必须先按照[托管Fika服务器](../hosting-a-fika-server/)部分中的所有步骤操作，然后您再按照以下步骤操作。
 
 {% hint style="info" %}
-Most of the time, connection issues are caused by improper network configuration by the server owner. We cannot stress enough the importance of the server owner taking a few minutes to read the "Hosting a Fika Server" guide and following every step carefully.
+大多数情况下，连接问题是由服务器所有者的网络配置不当引起的。我们再怎么强调服务器所有者花几分钟时间阅读"托管Fika服务器"指南并仔细遵循每个步骤的重要性都不为过。
 {% endhint %}
 
-Before continuing, make sure:
+在继续之前，请确保：
 
-* You have followed **ALL** the steps in [Installing Fika](../installing-fika/).
-* You can start the game and reach the main menu.
-* You can see the Fika watermark in the bottom-left corner.
-* You have **NO** other mods than Fika installed.
-  * You may install mods later, but it is important to get everything working without any mods first.
+* 您已遵循[安装Fika](../installing-fika/)中的**所有**步骤。
+* 您可以启动游戏并到达主菜单。
+* 您可以在左下角看到Fika水印。
+* 除了Fika之外，您**没有**安装其他任何模组。
+  * 您可以稍后安装模组，但首先确保没有任何模组的情况下一切正常工作是很重要的。
 
-### Setting up SPT Launcher
+### 设置SPT启动器
 
-You must configure SPT Launcher to connect to an external SPT server. Choose one of the connection methods below. Please confirm the hosting method with the host first.
+您必须配置SPT启动器以连接到外部SPT服务器。选择以下连接方法之一。请先与主机确认托管方法。
 
-* [Standard connection](join-using-direct-connection.md) (port forwarding, LAN)
-* [VPN connection](join-using-a-vpn.md)
+* [标准连接](join-using-direct-connection.md)（端口转发，局域网）
+* [VPN连接](join-using-a-vpn.md)

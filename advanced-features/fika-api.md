@@ -1,18 +1,18 @@
 ---
-description: All our APIs (last updated for SPT 4.0, Fika 2.0)
+description: 所有我们的API（最后更新于SPT 4.0，Fika 2.0）
 ---
 
 # Fika API
 
-## Overview
+## 概述
 
-An API key is automatically generated on first launch. You can find it in the `fika.jsonc` file in the configuration folder.
+API密钥在首次启动时自动生成。您可以在配置文件夹中的`fika.jsonc`文件中找到它。
 
-Use the API key to authenticate when making request. You also need to add the `requestcompressed` header with a value of `0`.
+使用API密钥在发出请求时进行身份验证。您还需要添加值为`0`的`requestcompressed`头。
 
 <details>
 
-<summary>Authentication example for C#</summary>
+<summary>C#身份验证示例</summary>
 
 ```csharp
 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", config.APIKey);
@@ -21,23 +21,23 @@ client.DefaultRequestHeaders.Add("requestcompressed", "0");
 
 </details>
 
-In e.g. Postman, the authentication type is "API Key", with the key being "`Authorization`" and the value being "`Bearer {apiKey}`".
+例如在Postman中，身份验证类型是"API Key"，键是"`Authorization`"，值是"`Bearer {apiKey}`"。
 
-## Get
+## 获取
 
 ### fika/api/items
 
-Returns all items from the SPT database, with the MongoID being the identifier, and the name, description and stackable amount being values.\
+返回SPT数据库中的所有物品，其中MongoID是标识符，名称、描述和可堆叠数量是值。\
 \
-Example response:
+示例响应：
 
 {% code fullWidth="false" %}
 ```json
 {
     "items": {
         "5447a9cd4bdc2dbd208b4567": {
-            "name": "Colt M4A1 5.56x45 assault rifle",
-            "description": "The Colt M4A1 carbine is a fully automatic variant of the basic M4 Carbine and was primarily designed for special operations use.\nHowever, U.S. Special Operations Command (USSOCOM) was soon to adopt the M4A1 for almost all special operations units, followed later by general introduction of the M4A1 into service with the U.S. Army and Marine Corps.",
+            "name": "Colt M4A1 5.56x45突击步枪",
+            "description": "Colt M4A1卡宾枪是基本M4卡宾枪的全自动变体，主要为特种作战用途设计。\n然而，美国特种作战司令部（USSOCOM）很快采用M4A1用于几乎所有特种作战单位，随后M4A1被引入美国陆军和海军陆战队服役。",
             "stackable": 10
         }
 }
@@ -46,57 +46,57 @@ Example response:
 
 ### fika/api/raids
 
-Returns all active raids.
+返回所有活动突袭。
 
 ### fika/api/headless
 
-Returns all active headless clients.
+返回所有活动的无头客户端。
 
 ### fika/api/heartbeat
 
-Checks whether the server is running. Primarily use by the WebApp.
+检查服务器是否正在运行。主要由WebApp使用。
 
 ### fika/api/players
 
-Returns all online players.
+返回所有在线玩家。
 
 ### fika/api/rawprofile
 
-Returns a raw profile in JSON format.
+以JSON格式返回原始配置文件。
 
-Input:
+输入：
 
-<table data-full-width="false"><thead><tr><th>Key</th><th>Value</th><th>Description</th></tr></thead><tbody><tr><td>profileId</td><td>{validMongoID}</td><td>The MongoID to return a raw profile of.</td></tr></tbody></table>
+<table data-full-width="false"><thead><tr><th>键</th><th>值</th><th>描述</th></tr></thead><tbody><tr><td>profileId</td><td>{validMongoID}</td><td>要返回原始配置文件的MongoID。</td></tr></tbody></table>
 
-Example input:
+示例输入：
 
 `{baseUrl}/fika/api/rawprofile?profileId=68e8f63d941b8a1c94c1d8bf`
 
-## Post
+## 发布
 
 ### fika/api/fleaban
 
-Bans a player from the flea for X amount of days. 0 = infinite.
+禁止玩家使用跳蚤市场X天。0 = 无限期。
 
 <details>
 
-<summary>Schema</summary>
+<summary>架构</summary>
 
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Flea Ban Request",
-  "description": "Schema for banning a player from the flea market for a specified number of days.",
+  "title": "跳蚤市场禁令请求",
+  "description": "禁止玩家在跳蚤市场指定天数的架构。",
   "type": "object",
   "properties": {
     "profileId": {
       "type": "string",
-      "description": "Unique identifier for the player's profile."
+      "description": "玩家配置文件的唯一标识符。"
     },
     "amountOfDays": {
       "type": "integer",
       "minimum": 0,
-      "description": "Number of days the player is banned. 0 means the ban is infinite."
+      "description": "玩家被禁止的天数。0表示禁令是无限期的。"
     }
   },
   "required": ["profileId", "amountOfDays"],
@@ -110,26 +110,26 @@ Bans a player from the flea for X amount of days. 0 = infinite.
 
 ### fika/api/createheadlessprofile
 
-Creates one headless profile. Used by the installer, not recommended to be used.
+创建一个无头配置文件。由安装程序使用，不建议使用。
 
 ### fika/api/logout
 
-Logs out the given MongoID from the game.
+从游戏中注销给定的MongoID。
 
 <details>
 
-<summary>Schema</summary>
+<summary>架构</summary>
 
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Logout Request",
-  "description": "Schema for logging out a player from the game using their MongoID profile ID.",
+  "title": "注销请求",
+  "description": "使用其MongoID配置文件ID将玩家从游戏中注销的架构。",
   "type": "object",
   "properties": {
     "profileId": {
       "type": "string",
-      "description": "The MongoDB ObjectID of the player to log out."
+      "description": "要注销的玩家的MongoDB ObjectID。"
     }
   },
   "required": ["profileId"],
@@ -143,22 +143,22 @@ Logs out the given MongoID from the game.
 
 ### fika/api/restartheadless
 
-Restarts the headless with the given MongoID.
+使用给定的MongoID重启无头客户端。
 
 <details>
 
-<summary>Schema</summary>
+<summary>架构</summary>
 
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Restart Headless Request",
-  "description": "Schema for restarting the headless instance associated with a given player profile ID.",
+  "title": "重启无头客户端请求",
+  "description": "重启与给定玩家配置文件ID相关联的无头实例的架构。",
   "type": "object",
   "properties": {
     "profileId": {
       "type": "string",
-      "description": "The MongoDB ObjectID of the player whose headless instance should be restarted."
+      "description": "应该重启无头实例的玩家的MongoDB ObjectID。"
     }
   },
   "required": ["profileId"],
@@ -172,46 +172,46 @@ Restarts the headless with the given MongoID.
 
 ### fika/api/senditem
 
-Sends X amount of items to the given MongoID.
+向给定的MongoID发送X数量的物品。
 
 <details>
 
-<summary>Schema</summary>
+<summary>架构</summary>
 
 {% code fullWidth="false" %}
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Send Item Request",
-  "description": "Schema for sending an item to a player with a given MongoID profile ID.",
+  "title": "发送物品请求",
+  "description": "向给定MongoID配置文件ID的玩家发送物品的架构。",
   "type": "object",
   "properties": {
     "itemTpl": {
       "type": "string",
-      "description": "Template ID of the item being sent."
+      "description": "正在发送的物品的模板ID。"
     },
     "amount": {
       "type": "integer",
       "minimum": 1,
-      "description": "Number of items to send."
+      "description": "要发送的物品数量。"
     },
     "message": {
       "type": "string",
       "maxLength": 255,
-      "description": "Optional message sent with the item. Can be empty."
+      "description": "随物品发送的可选消息。可以为空。"
     },
     "fir": {
       "type": "boolean",
-      "description": "Whether the item is marked as Found In Raid (FIR)."
+      "description": "物品是否标记为突袭中找到（FIR）。"
     },
     "expirationDays": {
       "type": "integer",
       "minimum": 1,
-      "description": "Number of days before the message expires."
+      "description": "消息过期前的天数。"
     },
     "profileId": {
       "type": "string",
-      "description": "The MongoDB ObjectID of the player to send the item to."
+      "description": "要发送物品给的玩家的MongoDB ObjectID。"
     }
   },
   "required": [
@@ -233,45 +233,45 @@ Sends X amount of items to the given MongoID.
 
 ### fika/api/senditemtoall
 
-Sends X amount of items to the given MongoIDs.
+向给定的MongoID发送X数量的物品。
 
 <details>
 
-<summary>Schema</summary>
+<summary>架构</summary>
 
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Send Item To Multiple Players Request",
-  "description": "Schema for sending items to multiple players using their MongoID profile IDs.",
+  "title": "向多个玩家发送物品请求",
+  "description": "使用其MongoID配置文件ID向多个玩家发送物品的架构。",
   "type": "object",
   "properties": {
     "itemTpl": {
       "type": "string",
-      "description": "Template ID of the item being sent."
+      "description": "正在发送的物品的模板ID。"
     },
     "amount": {
       "type": "integer",
       "minimum": 1,
-      "description": "Number of items to send to each player."
+      "description": "发送给每个玩家的物品数量。"
     },
     "message": {
       "type": "string",
       "maxLength": 255,
-      "description": "Optional message sent with the item. Can be empty."
+      "description": "随物品发送的可选消息。可以为空。"
     },
     "fir": {
       "type": "boolean",
-      "description": "Whether the item is marked as Found In Raid (FIR)."
+      "description": "物品是否标记为突袭中找到（FIR）。"
     },
     "expirationDays": {
       "type": "integer",
       "minimum": 1,
-      "description": "Number of days before the message expires."
+      "description": "消息过期前的天数。"
     },
     "profileIds": {
       "type": "array",
-      "description": "List of MongoDB ObjectIDs representing the player profiles to send the items to.",
+      "description": "代表要发送物品的玩家配置文件的MongoDB ObjectID列表。",
       "items": {
         "type": "string"
       },
@@ -296,27 +296,27 @@ Sends X amount of items to the given MongoIDs.
 
 ### fika/api/sendmessage
 
-Sends a message to a MongoID.
+向MongoID发送消息。
 
 <details>
 
-<summary>Schema</summary>
+<summary>架构</summary>
 
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Send Message Request",
-  "description": "Schema for sending a message to a player using their MongoID profile ID.",
+  "title": "发送消息请求",
+  "description": "使用其MongoID配置文件ID向玩家发送消息的架构。",
   "type": "object",
   "properties": {
     "message": {
       "type": "string",
       "maxLength": 255,
-      "description": "Message to send to the player. Can be empty."
+      "description": "要发送给玩家的消息。可以为空。"
     },
     "profileId": {
       "type": "string",
-      "description": "The MongoDB ObjectID of the player to send the message to."
+      "description": "要发送消息给的玩家的MongoDB ObjectID。"
     }
   },
   "required": ["message", "profileId"],

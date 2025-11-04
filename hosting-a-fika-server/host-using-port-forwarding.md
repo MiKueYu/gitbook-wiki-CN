@@ -1,42 +1,42 @@
 ---
-description: Step-by-step process for hosting a Fika server using port forwarding.
+description: 使用端口转发托管Fika服务器的逐步过程。
 ---
 
-# Host using port forwarding
+# 使用端口转发托管
 
-Port forwarding is a networking process that allows external devices to access one or multiple ports of a machine within your home network. Port forwarding can be configured through your router's settings interface, which is usually accessible by entering the gateway IP address into a web browser.
+端口转发是一种网络过程，允许外部设备访问您家庭网络中计算机的一个或多个端口。端口转发可以通过路由器的设置界面进行配置，通常通过在Web浏览器中输入网关IP地址来访问。
 
 {% hint style="warning" %}
-Not all Internet Service Providers (ISP) allows port forwarding. If you find yourself unable to port forward, you can use a public VPN service such as Radmin, ZeroTier, etc.). Click [here](host-using-a-vpn.md) to learn how to host using a VPN.
+并非所有互联网服务提供商（ISP）都允许端口转发。如果您发现自己无法进行端口转发，您可以使用公共VPN服务，如Radmin、ZeroTier等。点击[此处](host-using-a-vpn.md)了解如何使用VPN进行托管。
 {% endhint %}
 
-## Router configuration
+## 路由器配置
 
 {% hint style="info" %}
-We do not provide a step-by-step tutorial for port forwarding because the router settings interface varies between different models and manufacturers. Make sure to research how to achieve port forwarding for your specific router model.
+我们不提供端口转发的逐步教程，因为路由器设置界面在不同型号和制造商之间有所不同。请确保研究如何为您的特定路由器型号实现端口转发。
 
-You may be able to find guides for your router on [PortForward.com](https://portforward.com/) or by searching Google.
+您可能可以在[PortForward.com](https://portforward.com/)上或通过搜索Google找到您路由器的指南。
 {% endhint %}
 
-* Go in your router's configuration interface (open browser and type the [gateway IP](https://www.whatismyip.com/finding-your-default-gateway-address/)).
-* Access the port forward menu.
-* Port forward the following ports to your computer:
-  * 6969 TCP (SPT backend server).
-  * 25565 UDP (Fika in-game networking).
+* 进入路由器的配置界面（打开浏览器并输入[网关IP](https://www.whatismyip.com/finding-your-default-gateway-address/)）。
+* 访问端口转发菜单。
+* 将以下端口转发到您的计算机：
+  * 6969 TCP（SPT后端服务器）。
+  * 25565 UDP（Fika游戏内网络）。
 
 {% hint style="info" %}
-If you are playing on a PC separate from where your `SPT.server.exe` is running, you will need to forward UDP (default of 25565) to the gaming PC, instead of the machine `SPT.server.exe` is running on.
+如果您在与运行`SPT.server.exe`不同的PC上游戏，则需要将UDP（默认为25565）转发到游戏PC，而不是运行`SPT.server.exe`的机器。
 {% endhint %}
 
-## Windows Firewall
+## Windows防火墙
 
-Installing Fika using Fika-Installer will automatically configure the Windows firewall.
+使用Fika-Installer安装Fika将自动配置Windows防火墙。
 
-## Testing connectivity
+## 测试连接
 
-* Launch `SPT.Server.exe`.
+* 启动`SPT.Server.exe`。
 
-If everything is working properly, you should see something similar in the console output:
+如果一切正常工作，您应该在控制台输出中看到类似以下内容：
 
 ```
 ModLoader: loading: 1 server mods...
@@ -50,22 +50,22 @@ Server is running, do not close while playing SPT, Happy playing!!
 ```
 
 {% hint style="warning" %}
-If you see errors (red text) then your configuration is invalid or you are unable to host using the configured IP address/port.
+如果您看到错误（红色文本），则您的配置无效或您无法使用配置的IP地址/端口进行托管。
 {% endhint %}
 
-* Make sure `SPT.Server` is running.
-* Obtain your public IP address [here](https://api.ipify.org/).
-* Go to an [online port checker](https://portchecker.co).
-* Enter your public IP address and port 6969.
-* Test the port connectivity.
+* 确保`SPT.Server`正在运行。
+* 在[此处](https://api.ipify.org/)获取您的公共IP地址。
+* 转到[在线端口检查器](https://portchecker.co)。
+* 输入您的公共IP地址和端口6969。
+* 测试端口连接。
 
-If the port is closed, you may have an invalid configuration, Windows Firewall blocking the connection or your ISP does not allow port forwarding. Validate all your network settings or host using a [VPN client](host-using-a-vpn.md).
+如果端口关闭，您可能有无效配置，Windows防火墙阻止连接或您的ISP不允许端口转发。验证所有网络设置或使用[VPN客户端](host-using-a-vpn.md)进行托管。
 
-If the port shows as Open, your server is available for connections from friends. You will need to send them your Public IPv4 formatted like `https://your.pub.lic.ip:6969` for them to enter into their Launcher -> Settings -> URL field to connect to your server.
+如果端口显示为打开，您的服务器可供朋友连接。您需要将格式为`https://your.pub.lic.ip:6969`的公共IPv4发送给他们，以便他们将其输入到启动器->设置->URL字段中连接到您的服务器。
 
-## Hosting a raid
+## 托管突袭
 
-Your Fika instance is now ready to host a raid.
+您的Fika实例现在已准备好托管突袭。
 
-* [Click here](../playing-fika.md#hosting-a-raid) to learn how to host a raid.
-* [Click here](../fika-configuration/) to learn more about additional Fika configurations.
+* [点击此处](../playing-fika.md#hosting-a-raid)了解如何托管突袭。
+* [点击此处](../fika-configuration/)了解有关其他Fika配置的更多信息。

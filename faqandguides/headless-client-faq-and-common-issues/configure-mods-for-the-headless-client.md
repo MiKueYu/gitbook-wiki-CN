@@ -1,5 +1,5 @@
 ---
-description: Created by Shynd
+description: 由Shynd创建
 layout:
   width: default
   title:
@@ -16,19 +16,19 @@ layout:
     visible: true
 ---
 
-# Configure mods for the headless client
+# 为无头客户端配置模组
 
-## General instructions
+## 一般说明
 
-* If the PC where the headless client is installed has a GPU, you can simply open the headless client in graphics mode by pressing G when prompted by FikaHeadlessManager during startup. In graphics mode you can access F12 (or F6 for SAIN) to configure your mods.
-* If the PC where headless client is installed does NOT have a GPU, close FikaHeadlessManager and the headless client. Install the plugins you wish to configure on the SPT instance where you will be playing (NOT THE HEADLESS), configure the options however you want, then copy the necessary .cfg files from `<SPT Install>/BepInEx/config/` into the `<Headless SPT>/BepInEx/config/` folder for your headless client install.
+* 如果安装无头客户端的PC有GPU，您可以在启动时由FikaHeadlessManager提示时按G键以图形模式打开无头客户端。在图形模式下，您可以访问F12（或SAIN的F6）来配置您的模组。
+* 如果安装无头客户端的PC**没有**GPU，请关闭FikaHeadlessManager和无头客户端。在您将要玩游戏的SPT实例上安装您希望配置的插件（**不是无头客户端**），以您想要的方式配置选项，然后将必要的.cfg文件从`<SPT安装>/BepInEx/config/`复制到无头客户端安装的`<无头SPT>/BepInEx/config/`文件夹中。
 
 ## SAIN
 
-* SAIN settings are stored in the `BepInEx/plugins/SAIN/Presets/` folder. I suggest using your main game to configure SAIN options however you want them to be on the headless client, then copy your entire `BepInEx/plugins/SAIN/` folder over to the dedicated client, overwriting all when prompted.
+* SAIN设置存储在`BepInEx/plugins/SAIN/Presets/`文件夹中。我建议使用您的主游戏将SAIN选项配置为您希望在无头客户端上使用的方式，然后将整个`BepInEx/plugins/SAIN/`文件夹复制到专用客户端，在提示时覆盖所有文件。
 
 ## Donuts
 
-* Donuts settings are stored in the `BepInEx/plugins/dvize.Donuts/Config` folder. Same as SAIN above, I suggest configuring Donuts settings using the GUI from your main game and then copying over the entire `BepInEx/plugins/dvize.Donuts/` folder to the headless client.
+* Donuts设置存储在`BepInEx/plugins/dvize.Donuts/Config`文件夹中。与上面的SAIN相同，我建议使用主游戏的GUI配置Donuts设置，然后将整个`BepInEx/plugins/dvize.Donuts/`文件夹复制到无头客户端。
 
 ***

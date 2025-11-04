@@ -1,32 +1,32 @@
 ---
-description: Getting started with hosting a Fika server.
+description: 开始托管Fika服务器。
 icon: server
 ---
 
-# Hosting a Fika server
+# 托管Fika服务器
 
-## Getting started
+## 入门
 
-This section is dedicated to setting up Fika for hosting. There are different ways to allow players to join your server. Please read the different sections below to determine which method you will be using.
+本节专门介绍为托管设置Fika。有不同的方式允许玩家加入您的服务器。请阅读以下不同部分以确定您将使用的方法。
 
 {% hint style="warning" %}
-Please note that there is some technical knowledge required to achieve this. If you absolutely have no experience, you will have a hard time. Our [Discord](https://discord.gg/project-fika) provides support in such cases.
+请注意，这需要一些技术知识。如果您完全没有经验，您将会有困难。在这种情况下，我们的[Discord](https://discord.gg/project-fika)提供支持。
 {% endhint %}
 
-Before continuing, make sure:
+在继续之前，请确保：
 
-* You have followed **ALL** the steps in [Installing Fika](../installing-fika/).
-* You can start the game and reach the main menu.
-* You can see the Fika watermark in the bottom-left corner.
-* You have **NO** other mods than Fika installed.
-  * You may install mods later, but it is important to get everything working without any mods first.
+* 您已遵循[安装Fika](../installing-fika/)中的**所有**步骤。
+* 您可以启动游戏并到达主菜单。
+* 您可以在左下角看到Fika水印。
+* 除了Fika之外，您**没有**安装其他任何模组。
+  * 您可以稍后安装模组，但首先确保没有任何模组的情况下一切正常工作是很重要的。
 
-## Choosing your hosting method
+## 选择您的托管方法
 
-The preferred and officially supported way of hosting a Fika server is by port forwarding. It is by far the most efficient way for smoothest gameplay.
+托管Fika服务器的首选和官方支持方式是通过端口转发。这是迄今为止最有效的平滑游戏方式。
 
-However due to certain network configuration or ISP restrictions, this may not be possible for you. In that case, someone else in your group should attempt to host using port forwarding. If no one is able to host using port forwarding, the alternative is to use a VPN such as Radmin VPN or ZeroTier. Keep in mind that using a free VPN service may cause instability or poor performance during gameplay.
+但是由于某些网络配置或ISP限制，这对您来说可能不可行。在这种情况下，您团队中的其他人应尝试使用端口转发进行托管。如果没有人在能使用端口转发进行托管，替代方法是使用VPN，如Radmin VPN或ZeroTier。请记住，使用免费VPN服务可能会导致游戏过程中的不稳定或性能不佳。
 
-You can also host over LAN if all players are in the same house/network.
+如果所有玩家都在同一房屋/网络中，您也可以通过局域网托管。
 
-<a href="host-using-port-forwarding.md" class="button primary" data-icon="arrow-pointer">Host with Port Forwarding</a> <a href="host-using-a-vpn.md" class="button primary" data-icon="arrow-pointer">Host using a VPN</a> <a href="host-over-lan.md" class="button primary" data-icon="arrow-pointer">Host over LAN</a>
+<a href="host-using-port-forwarding.md" class="button primary" data-icon="arrow-pointer">使用端口转发托管</a> <a href="host-using-a-vpn.md" class="button primary" data-icon="arrow-pointer">使用VPN托管</a> <a href="host-over-lan.md" class="button primary" data-icon="arrow-pointer">通过局域网托管</a>

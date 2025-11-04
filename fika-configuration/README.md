@@ -1,12 +1,12 @@
 ---
-description: Getting started with configuring Fika.
+description: 开始配置Fika。
 icon: gears
 ---
 
-# Fika configuration
+# Fika配置
 
-Fika has two type of configuration: client configuration and server configuration.
+Fika有两种类型的配置：客户端配置和服务器配置。
 
-The [client.md](client.md "mention") configuration allows you to configure your in game experience while playing in a Fika server.
+[client.md](client.md "mention") 配置允许您在Fika服务器中游戏时配置您的游戏体验。
 
-The [server.md](server.md "mention") configuration allows you to configure certain parameters when hosting a Fika server.
+[server.md](server.md "mention") 配置允许您在托管Fika服务器时配置某些参数。

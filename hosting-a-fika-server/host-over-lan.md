@@ -1,47 +1,47 @@
 ---
-description: Step-by-step process for hosting a Fika server in your local network.
+description: 在本地网络中托管Fika服务器的逐步过程。
 ---
 
-# Host over LAN
+# 通过局域网托管
 
-Hosting over LAN allows you to play with someone in the same house/network without internet access and without any real port forwarding other than allowing the application in your local firewall.
+通过局域网托管允许您与同一房屋/网络中的人一起玩游戏，无需互联网访问，也无需真正的端口转发，只需允许本地防火墙中的应用程序即可。
 
-## Obtain your local IP
+## 获取您的本地IP
 
-Your local IP address will be required to host over LAN. Follow the steps below to obtain it.
+托管局域网需要您的本地IP地址。按照以下步骤获取它。
 
-* Press the `Windows key` and type `cmd`.
+* 按`Windows键`并输入`cmd`。
 
 <figure><img src="../.gitbook/assets/win_run_cmd.png" alt="" width="563"><figcaption></figcaption></figure>
 
-* Type `ipconfig` and then press `enter` in the command prompt.
-* Find the network adapter you are using (Ethernet or Wi-Fi). There can be multiple Ethernet adapter - make sure you identify the correct one.
-* Find the IPv4 Address entry and take note of the IP address, e.g `192.168.0.152`. This will be referred to as `your_lan_ip` below.
+* 在命令提示符中输入`ipconfig`，然后按`回车`。
+* 找到您正在使用的网络适配器（以太网或Wi-Fi）。可能有多个以太网适配器 - 确保识别正确的那个。
+* 找到IPv4地址条目并记下IP地址，例如`192.168.0.152`。这在下面将被称为`your_lan_ip`。
 
-<figure><img src="../.gitbook/assets/fika_ipconfig.png" alt=""><figcaption><p>Your local IP address should appear under Ethernet adapter (if your connection is wired)</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/fika_ipconfig.png" alt=""><figcaption><p>您的本地IP地址应出现在以太网适配器下（如果您的连接是有线的）</p></figcaption></figure>
 
-## Configure Windows Firewall
+## 配置Windows防火墙
 
-Installing Fika using Fika-Installer will automatically configure the Windows Firewall.
+使用Fika-Installer安装Fika将自动配置Windows防火墙。
 
-## Configure your local IP in Fika
+## 在Fika中配置您的本地IP
 
-* Start `SPT.Server.exe` at least once to generate the configuration files, then close it.
+* 至少启动一次`SPT.Server.exe`以生成配置文件，然后关闭它。
 
 <figure><img src="../.gitbook/assets/https___files.gitbook.com_v0_b_gitbook-x-prod.appspot.com_o_spaces_2FKIBpsnthxy8OSpsWzsDI_2Fuploads_2FtXMCT7qmRaqYnXrLE8Tr_2Fhttps___files.gitbook.com_v0_b_gitbook-x-prod.appspot.com_o_spaces_2FKIBpsnthxy8OSpsWzs.png" alt=""><figcaption></figcaption></figure>
 
-* Navigate to your `user\mods\fika-server\assets\configs`&#x20;
-* Open `fika.jsonc`.
-* Find the `server` section.
-* Change `ip` to `your_lan_ip`.
-* Change `backendIp` to `your_lan_ip`.
-* Save the file and close it.
+* 导航到您的`user\mods\fika-server\assets\configs`&#x20;
+* 打开`fika.jsonc`。
+* 找到`server`部分。
+* 将`ip`更改为`your_lan_ip`。
+* 将`backendIp`更改为`your_lan_ip`。
+* 保存文件并关闭它。
 
 <figure><img src="../.gitbook/assets/fika_jsonc_lan.png" alt=""><figcaption></figcaption></figure>
 
-* Launch `SPT Server`
+* 启动`SPT Server`
 
-If everything is working properly, you should see something similar in the console output:
+如果一切正常工作，您应该在控制台输出中看到类似以下内容：
 
 ```
 ModLoader: loading: 1 server mods...
@@ -55,47 +55,47 @@ Server is running, do not close while playing SPT, Happy playing!!
 ```
 
 {% hint style="warning" %}
-If you see errors (red text) then your configuration is invalid or you are unable to host using the configured IP address/port.
+如果您看到错误（红色文本），则您的配置无效或您无法使用配置的IP地址/端口进行托管。
 {% endhint %}
 
-* Start `SPT Launcher`
+* 启动`SPT Launcher`
 
 <figure><img src="../.gitbook/assets/https___files.gitbook.com_v0_b_gitbook-x-prod.appspot.com_o_spaces_2FKIBpsnthxy8OSpsWzsDI_2Fuploads_2FQIK2fJ1ONoqXIAA3v9tl_2Fhttps___files.gitbook.com_v0_b_gitbook-x-prod.appspot.com_o_spaces_2FKIBpsnthxy8OSpsWzs.png" alt=""><figcaption></figcaption></figure>
 
-* Click the `Settings` button
+* 点击`设置`按钮
 
 <figure><img src="../.gitbook/assets/https___files.gitbook.com_v0_b_gitbook-x-prod.appspot.com_o_spaces_2FKIBpsnthxy8OSpsWzsDI_2Fuploads_2FqwHM3gxlwjEsrugHTtc0_2Fimage (1).avif" alt=""><figcaption></figcaption></figure>
 
-* Check the `Developer mode` box.
-* Enter your local IP address in the URL section. DO NOT leave out `https://` and do not add a slash at the end. The URL box should look like this: `https://192.168.0.33:6969`.
+* 选中`Developer Mode`框。
+* 在URL部分输入您的本地IP地址。不要省略`https://`，也不要添加结尾斜杠。URL框应该看起来像这样：`https://192.168.0.33:6969`。
 
 <figure><img src="../.gitbook/assets/https___files.gitbook.com_v0_b_gitbook-x-prod.appspot.com_o_spaces_2FKIBpsnthxy8OSpsWzsDI_2Fuploads_2FRJRDafOFXrz8sQBMXNfo_2Fimage (1).avif" alt=""><figcaption></figcaption></figure>
 
-* Press the arrow on the right corner.
-* You should now be able to create your profile and log in to the server.
-* Start the game.
+* 按右角的箭头。
+* 您现在应该能够创建您的配置文件并登录到服务器。
+* 启动游戏。
 
 <figure><img src="../.gitbook/assets/https___files.gitbook.com_v0_b_gitbook-x-prod.appspot.com_o_spaces_2FKIBpsnthxy8OSpsWzsDI_2Fuploads_2FVhkOgEbLlzyx9kazRxLl_2Fimage.avif" alt=""><figcaption></figcaption></figure>
 
-* Press `F12` when in-game to bring up the configuration manager.
-* Find the `Force IP` and `Force Bind IP` in the `Fika.Core` section of the configuration manager.
-* Set both `Force IP` and `Force Bind IP` to `your_lan_ip`.
+* 在游戏中按`F12`以调出配置管理器。
+* 在配置管理器的`Fika.Core`部分找到`Force IP`和`Force Bind IP`。
+* 将`Force IP`和`Force Bind IP`都设置为`your_lan_ip`。
 
 <figure><img src="../.gitbook/assets/fika_lan_f12.png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-Note: Players willing to host a raid will also need to set the `Force IP` and `Force Bind IP` in their respective Fika configuration.
+注意：愿意托管突袭的玩家还需要在各自的Fika配置中设置`Force IP`和`Force Bind IP`。
 {% endhint %}
 
-## Testing connectivity
+## 测试连接
 
-* Ask your friend(s) to ping your local IP address from a computer within the same local network.
+* 请您的朋友从同一本地网络内的计算机ping您的本地IP地址。
 
-If the ping fails then it means that you grabbed the wrong local IP address or that your network configuration is invalid. Validate your network settings.
+如果ping失败，则意味着您获取了错误的本地IP地址或您的网络配置无效。验证您的网络设置。
 
-## Hosting a raid
+## 托管突袭
 
-Your Fika instance is now ready to host a raid.
+您的Fika实例现在已准备好托管突袭。
 
-* [Click here](../playing-fika.md#hosting-a-raid) to learn how to host a raid.
-* [Click here](../fika-configuration/) to learn more about additional Fika configurations.
+* [点击此处](../playing-fika.md#hosting-a-raid)了解如何托管突袭。
+* [点击此处](../fika-configuration/)了解更多关于其他Fika配置的信息。

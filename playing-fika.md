@@ -1,59 +1,59 @@
 ---
-description: How to host or join a raid using your own Fika server or someone else's.
+description: 如何使用您自己的Fika服务器或别人的服务器托管或加入突袭行动。
 icon: play
 ---
 
-# Playing Fika
+# 游玩Fika
 
-## Getting started
+## 入门
 
-This section describes the steps to create or join a Fika raid to play with your friends. Before continuing, ensure that you followed all the steps to [host your Fika server](hosting-a-fika-server/) or [join a Fika server](joining-a-fika-server/).
+本节描述了创建或加入Fika突袭行动以和朋友一起游玩的步骤。在继续之前，请确保您已按照[托管您的Fika服务器](hosting-a-fika-server/)或[加入Fika服务器](joining-a-fika-server/)的所有步骤操作。
 
 {% hint style="success" %}
-Take a moment to verify that you and your friend(s) can see each other in the Online Players list at the main menu. If you cannot, review the steps for hosting & joining again or visit the [FAQ](faqandguides/#i-do-not-see-my-friend-s-on-the-online-players-list-on-the-main-menu-i-cannot-see-my-friends-raid-in).
+花点时间验证您和您的朋友是否可以在主菜单的在线玩家列表中看到彼此。如果不能，请再次检查托管和加入的步骤，或访问[常见问题解答](faqandguides/#i-do-not-see-my-friend-s-on-the-online-players-list-on-the-main-menu-i-cannot-see-my-friends-raid-in)。
 {% endhint %}
 
-## Hosting a raid
+## 托管突袭行动
 
-* Start `SPT.Launcher.exe`
-* Login to your account
-* Start the game
-* Click `Escape From Tarkov` in the main menu
-* Choose `PMC` or `SCAV`
-* Choose a raid location and time phase
-* Click `Next` in Practice Game Mode screen
-* Click `Next` in Insurance screen
-* Click `Host Raid` in Lobby screen
-* Press `Start`
+* 启动 `SPT.Launcher.exe`
+* 登录您的账户
+* 启动游戏
+* 在主菜单点击 `逃离塔科夫`
+* 选择 `PMC` 或 `SCAV`
+* 选择突袭地点和时间段
+* 在练习游戏模式屏幕点击 `下一步`
+* 在保险屏幕点击 `下一步`
+* 在大厅屏幕点击 `托管突袭`
+* 按 `开始`
 
-Once your raid is loaded, you'll see "Waiting for host to start the raid." Your friends can now see your raid in the lobby screen and join it.
+一旦您的突袭加载完成，您将看到"正在等待主机开始突袭。" 您的朋友现在可以在大厅屏幕看到您的突袭并加入。
 
-When all players joined, you can start the raid by pressing `Start Raid` at the bottom.
+当所有玩家都加入后，您可以通过按底部的 `开始突袭` 来开始突袭。
 
-## Joining a raid
+## 加入突袭行动
 
-* Start `SPT.Launcher.exe`
-* Login to your account
-* Start the game
-* Click `Escape From Tarkov` in the main menu
-* Choose `PMC` or `SCAV`
-* Choose a raid location and time phase
-* Click `Next` in Practice Game Mode screen
-* Click `Next` in Insurance screen
-* Find your friend's raid in the lobby list and click `Join`
+* 启动 `SPT.Launcher.exe`
+* 登录您的账户
+* 启动游戏
+* 在主菜单点击 `逃离塔科夫`
+* 选择 `PMC` 或 `SCAV`
+* 选择突袭地点和时间段
+* 在练习游戏模式屏幕点击 `下一步`
+* 在保险屏幕点击 `下一步`
+* 在大厅列表中找到您朋友的突袭并点击 `加入`
 
-Once your raid is loaded, you'll see "Waiting for host to start the raid." The raid will start when the host presses on `Start Raid`.
+一旦您的突袭加载完成，您将看到"正在等待主机开始突袭。" 当主机按下 `开始突袭` 时，突袭将开始。
 
 {% hint style="warning" %}
-If you do not see a raid list, revisit [Installing Fika](installing-fika/).
+如果您没有看到突袭列表，请重新访问[安装Fika](installing-fika/)。
 
-If you do not see your friend's raid in the raid list even though they claim to have hosted one, [see this FAQ entry](faqandguides/#i-do-not-see-my-friend-s-on-the-online-players-list-on-the-main-menu-i-cannot-see-my-friends-raid-in).
+如果您在突袭列表中看不到您朋友的突袭，即使他们声称已经托管了，[请参见此常见问题解答](faqandguides/#i-do-not-see-my-friend-s-on-the-online-players-list-on-the-main-menu-i-cannot-see-my-friends-raid-in)。
 
-If you or your friend is getting an error about verifying ports are open, [see this FAQ entry](faqandguides/#my-friend-is-getting-an-error-about-open-ports-when-trying-to-join-my-raid).
+如果您或您的朋友在尝试加入突袭时收到有关验证端口是否开放的错误，[请参见此常见问题解答](faqandguides/#my-friend-is-getting-an-error-about-open-ports-when-trying-to-join-my-raid)。
 {% endhint %}
 
-## Additional information
+## 附加信息
 
-* You cannot join mid-raid as a PMC or SCAV. You have to join the raid before the host starts the raid.
-* The raid host is providing all the AI and spawn logic. If the raid host leaves or crashes, the raid dies.
-* If a player crashes or disconnects, they can attempt to rejoin the raid (except the raid host) by navigating back to the join raid screen and clicking `Join` again.
+* 您不能在突袭中途作为PMC或SCAV加入。您必须在主机开始突袭之前加入。
+* 突袭主机提供所有的AI和生成逻辑。如果突袭主机离开或崩溃，突袭就结束了。
+* 如果玩家崩溃或断开连接，他们可以尝试重新加入突袭（除了突袭主机）通过返回到加入突袭屏幕并再次点击 `加入`。

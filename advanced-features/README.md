@@ -1,12 +1,12 @@
 ---
-description: Advanced features of Fika.
+description: Fika的高级功能。
 icon: magnifying-glass
 ---
 
-# Advanced features
+# 高级功能
 
 {% hint style="warning" %}
-This section is for advanced users only. We will not provide support unless you know what you're doing.
+此部分仅供高级用户使用。除非您知道自己在做什么，否则我们不会提供支持。
 {% endhint %}
 
-<a href="headless-client/" class="button primary" data-icon="right-long">Set up a headless client</a> <a href="nat-punching.md" class="button primary" data-icon="right-long">Host SPT Server with NAT Punching</a> <a href="fika-api.md" class="button primary" data-icon="right-long">Using the Fika API</a>
+<a href="headless-client/" class="button primary" data-icon="right-long">设置无头客户端</a> <a href="nat-punching.md" class="button primary" data-icon="right-long">使用NAT穿透托管SPT服务器</a> <a href="fika-api.md" class="button primary" data-icon="right-long">使用Fika API</a>
