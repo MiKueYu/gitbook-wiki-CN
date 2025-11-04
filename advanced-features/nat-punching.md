@@ -1,5 +1,5 @@
-﻿---
-description: Step-by-step process for setting up a dedicated SPT server with NAT punching.
+---
+description: 为专用SPT服务器设置NAT穿孔的逐步过程。
 layout:
   width: default
   title:
@@ -16,174 +16,181 @@ layout:
     visible: true
 ---
 
-# NAT Punching
+# NAT穿孔
 
-## 浠€涔堟槸NAT绌块€忥紵
+## 什么是NAT穿孔？
 
-NAT绌块€忔槸涓€绉峓NAT绌胯秺鎶€鏈痌(https://en.wikipedia.org/wiki/NAT_traversal)锛屽厑璁镐綅浜庝笉鍚岃矾鐢卞櫒鍚庨潰鐨勪袱涓澶囧缓绔嬬洿鎺ョ殑鐐瑰鐐硅繛鎺ャ€傚湪鐢变簬ISP鎴栫綉缁滈檺鍒惰€屾棤娉曡繘琛岀鍙ｈ浆鍙戠殑鎯呭喌涓嬶紝杩欑壒鍒湁鐢ㄣ€?
-浣嗘槸锛屽苟闈炴墍鏈夎矾鐢卞櫒閮芥敮鎸丯AT绌块€忋€備緥濡傦紝**瀵圭ОNAT**璺敱鍣ㄩ€氬父浼氶樆姝㈡垚鍔熺殑NAT绌块€忥紝鍥犱负瀹冧滑澶勭悊澶栭儴绔彛鏄犲皠鐨勬柟寮忋€?
-## How does it work?
+NAT穿孔是一种[NAT穿越技术](https://en.wikipedia.org/wiki/NAT_traversal)，允许位于不同路由器后的两个设备建立直接的点对点连接。当由于ISP或网络限制而无法进行端口转发时，这尤其有用。
 
-A public server listens for incoming connections from clients and records their external IP addresses and ports. It then introduces each client by sharing the other鈥檚 external IP address. For example, `Client 1` receives `Client 2`鈥檚 external IP address, and vice versa.
+然而，并非所有路由器都支持NAT穿孔。例如，**对称NAT**路由器通常由于其处理外部端口映射的方式而阻止成功的NAT穿孔。
 
-This is when NAT punching occurs: upon receiving `Client 2`鈥檚 IP address, `Client 1` begins sending multiple packets (the 鈥減unching鈥? to `Client 2`. At the same time, `Client 2` sends packets to `Client 1`, creating a routing entry in both clients鈥?routers.
+## 它是如何工作的？
 
-At this point, both routers allow communication through this specific route, which can then be leveraged to host a `Fika` raid.
+公共服务器监听来自客户端的传入连接，并记录它们的外部IP地址和端口。然后通过共享对方的外部IP地址来介绍每个客户端。例如，`客户端1`接收`客户端2`的外部IP地址，反之亦然。
 
-## Requirements
+这就是NAT穿孔发生的时候：当`客户端1`接收到`客户端2`的IP地址时，它开始向`客户端2`发送多个数据包（即"穿孔"）。同时，`客户端2`向`客户端1`发送数据包，在两个客户端的路由器中创建路由条目。
 
-* The SPT server must be hosted on an externally accessible machine, such as a VPS.
-* Both the raid host and any players connecting via NAT punching must use a router that supports Full-Cone NAT, as this type is required for proper connectivity. You can check your router鈥檚 NAT type by searching online for your specific router model.
+此时，两个路由器都允许通过此特定路由进行通信，然后可以利用该路由来托管`Fika`突袭。
 
-## Notes
+## 要求
 
-This guide covers the installation process for Windows only. Linux is not covered in this article but the principle is the same. Check out our dedicated Linux channel in our Discord for more information.
+* SPT服务器必须托管在外部可访问的机器上，例如VPS。
+* 突袭主机和通过NAT穿孔连接的任何玩家都必须使用支持全锥形NAT的路由器，因为这是正常连接所必需的。您可以通过在线搜索您特定的路由器型号来检查路由器的NAT类型。
 
-## Installation
+## 注意事项
+
+本指南仅涵盖Windows的安装过程。Linux不在本文涵盖范围内，但原理是相同的。请查看我们在Discord中的专用Linux频道了解更多信息。
+
+## 安装
 
 {% stepper %}
 {% step %}
-### Set up a public Windows-based server
+### 设置公共Windows服务器
 
-A publicly accessible server is required for NAT punching. It is recommended to rent an affordable Windows-based VPS to host the `SPT Server`; providers listed on [**LowEndBox**](https://lowendbox.com/) are a good starting point for low-cost options.
+NAT穿孔需要公共服务器。建议租用便宜的Windows VPS来托管`SPT服务器`；[**LowEndBox**](https://lowendbox.com/)上列出的提供商是低成本选项的良好起点。
 
-If you are uncertain whether NAT punching will work with your network configuration, you can provision a temporary VPS using [**Kamatera**](https://www.kamatera.com/), which offers hourly billing 鈥?making it a cost-effective solution for testing.
+如果您不确定NAT穿孔是否适用于您的网络配置，可以使用[**Kamatera**](https://www.kamatera.com/)配置临时VPS，它提供按小时计费——使其成为测试的经济高效解决方案。
 {% endstep %}
 
 {% step %}
-### Download the latest `SPT` standalone release
+### 下载最新的`SPT`独立版本
 
-Obtain the latest standalone `SPT` release [here](https://github.com/sp-tarkov/build/releases/). The download link will be in the release notes.
+在此处获取最新的SPT独立版本[https://github.com/sp-tarkov/build/releases/](https://github.com/sp-tarkov/build/releases/)。下载链接将在发布说明中。
 {% endstep %}
 
 {% step %}
-### Extract the `SPT` archive in a new empty `SPT` folder
+### 在新的空`SPT`文件夹中解压`SPT`存档
 
 <figure><img src="../.gitbook/assets/image (33).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Download the latest `Fika-Server` standalone release
+### 下载最新的`Fika-Server`独立版本
 
-Obtain the latest `Fika-Server` standalone release [here](https://github.com/project-fika/Fika-Server-CSharp/releases).
+在此处获取最新的`Fika-Server`独立版本[https://github.com/project-fika/Fika-Server-CSharp/releases](https://github.com/project-fika/Fika-Server-CSharp/releases)。
 {% endstep %}
 
 {% step %}
-### Extract the Fika-Server archive in the root of your `SPT` installation folder
+### 在`SPT`安装文件夹的根目录中解压Fika-Server存档
 
 <figure><img src="../.gitbook/assets/image (34).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Start `SPT.Server.exe` to generate the Fika Server configuration file
+### 启动`SPT.Server.exe`以生成Fika服务器配置文件
 
-`SPT.Server.exe` is located inside the `SPT` sub folder of your `SPT` installation folder.
+`SPT.Server.exe`位于`SPT`安装文件夹的`SPT`子文件夹中。
 
 <figure><img src="../.gitbook/assets/image (35).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Wait for `SPT` server to be fully loaded then close it
+### 等待`SPT`服务器完全加载然后关闭它
 
-Close `SPT` server when you see `Server has started, happy playing`.
+当您看到`Server has started, happy playing`时关闭`SPT`服务器。
 
 <figure><img src="../.gitbook/assets/image (36).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Enable NAT Punching in Fika Server
+### 在Fika服务器中启用NAT穿孔
 
-This setting controls if the `Nat Punch Server` should run on your SPT server.
+此设置控制`Nat Punch Server`是否应在您的SPT服务器上运行。
 
-* Navigate to `SPT\user\mods\fika-server\assets\configs`.
-* Open `fika.jsonc` with your preferred text editor software (`Notepad++` is recommended).
-* Find the `natPunchServer` section and set `enable` to `true`.
+* 导航到`SPT\user\mods\fika-server\assets\configs`。
+* 使用您首选的文本编辑器软件打开`fika.jsonc`（推荐使用`Notepad++`）。
+* 找到`natPunchServer`部分并将`enable`设置为`true`。
 
 <figure><img src="../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
 
-* Save and exit the text editor.
+* 保存并退出文本编辑器。
 {% endstep %}
 
 {% step %}
-### Start `SPT.Server.exe`
+### 启动`SPT.Server.exe`
 
-Validate that the `Nat Punch Server` successfully loaded.
+验证`Nat Punch Server`是否成功加载。
 
 <figure><img src="../.gitbook/assets/image (38).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Validate your network configuration
+### 验证您的网络配置
 
-Make sure that the following ports are port forwarded and opened in your server firewall:
+确保以下端口已在您的服务器防火墙中进行端口转发并打开：
 
-* 6969 TCP (SPT Server)
-* 6790 UDP (Nat Punch Server)
+* 6969 TCP（SPT服务器）
+* 6790 UDP（Nat Punch服务器）
 {% endstep %}
 
 {% step %}
-### Start `SPT.Launcher` on your computer
+### 在您的计算机上启动`SPT.Launcher`
 
-We assume you already have a working Fika installation or you know how to set up one. If you don't, click [here](../installing-fika/) for Fika installation steps.
+我们假设您已经有一个正常工作的Fika安装或您知道如何设置一个。如果没有，请点击[此处](../installing-fika/)了解Fika安装步骤。
 {% endstep %}
 
 {% step %}
-### Configure your server IP in `SPT Launcher`
+### 在`SPT Launcher`中配置您的服务器IP
 
-`SPT Launcher` needs to connect to the `SPT` server on your VPS/public server. Other players will also need to do the following steps.
+`SPT Launcher`需要连接到您VPS/公共服务器上的`SPT`服务器。其他玩家也需要执行以下步骤。
 
-* Click the `Settings` button at the top right corner.
+* 单击右上角的`Settings`按钮。
 
 <figure><img src="../.gitbook/assets/image (39).png" alt=""><figcaption></figcaption></figure>
 
-* Check the `Developer Mode` box then enter your server IP address in the URL box. Do not remove `https://`, do not add a slash at the end.&#x20;
-* Press the arrow key at the top right corner to save your settings.
+* 选中`Developer Mode`框，然后在URL框中输入您的服务器IP地址。不要删除`https://`，不要在末尾添加斜杠。
+* 按右上角的箭头键保存设置。
 
 <figure><img src="../.gitbook/assets/image (40).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Start the game
+### 启动游戏
 
-Press `Start Game` to launch the game.
+按`Start Game`启动游戏。
 
 <figure><img src="../.gitbook/assets/image (42).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Enable NAT Punching in Fika (raid host only)
+### 在Fika中启用NAT穿孔（仅突袭主机）
 
-This setting indicates that any player connecting to your raid must use NAT punching. It is a client-side setting, meaning it only applies to **you**, the raid host. Other players do **not** need to enable this setting unless they intend to host a raid without port forwarding.
+此设置表示连接到您突袭的任何玩家都必须使用NAT穿孔。这是一个客户端设置，意味着它仅适用于**您**，突袭主机。其他玩家不需要启用此设置，除非他们打算在没有端口转发的情况下主持突袭。
 
-* Press F12 to bring up the configuration manager.
-* Check the `Advanced settings` box.
-* Check the `Nat Punching` box to enable NAT punching.
+* 按F12打开配置管理器。
+* 选中`Advanced settings`框。
+* 选中`Nat Punching`框以启用NAT穿孔。
 
 <figure><img src="../.gitbook/assets/image (41).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Host a raid and wait for other players to connect
+### 托管突袭并等待其他玩家连接
 
-Navigate the menus and host a raid. You should see that your server was added to the Nat Punch server list in the `SPT Server` console.&#x20;
+浏览菜单并托管突袭。您应该看到您的服务器已添加到`SPT Server`控制台中的Nat Punch服务器列表中。
 
 <figure><img src="../.gitbook/assets/image (43).png" alt=""><figcaption></figcaption></figure>
 
-The `Nat Punch Server` will introduce the external IP address of your computer to players joining your raid.
+`Nat Punch Server`将向加入您突袭的玩家介绍您的计算机的外部IP地址。
 
 <figure><img src="../.gitbook/assets/image (44).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
-### Start the raid when all players are connected
+### 在所有玩家连接后启动突袭
 
-Start the raid when all players are connected and ready to go.
+当所有玩家都连接并准备好时启动突袭。
 {% endstep %}
 {% endstepper %}
 
-## 鏃犲ご瀹㈡埛绔?
-瑕佷负`鏃犲ご瀹㈡埛绔痐鍚敤NAT绌块€忥細
+## 无头客户端
 
-* 纭繚鎮ㄥ凡閬靛惊涓婅堪鎵€鏈夋楠ゃ€?* 瀵艰埅鍒癭鏃犲ご瀹㈡埛绔痐鐨刞BepInEx\config`銆?* 浣跨敤鎮ㄩ閫夌殑鏂囨湰缂栬緫鍣ㄦ墦寮€`com.fika.core.cfg`銆?* 鎼滅储鍙傛暟`Use NAT Punching`骞跺皢鍏惰缃负`true`銆?* 淇濆瓨骞跺叧闂枃鏈紪杈戝櫒銆?
+要在`headless client`中启用NAT穿孔：
+
+* 确保您已按照上述所有步骤操作。
+* 导航到`headless client`的`BepInEx\config`。
+* 使用您首选的文本编辑器打开`com.fika.core.cfg`。
+* 搜索参数`Use NAT Punching`并设置为`true`。
+* 保存并关闭文本编辑器。
+
 <figure><img src="../.gitbook/assets/image (47).png" alt=""><figcaption></figcaption></figure>
-
