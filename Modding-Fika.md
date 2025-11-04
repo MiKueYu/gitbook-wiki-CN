@@ -193,37 +193,37 @@ public void SendReusableToAll<T>(T packet, DeliveryMethod deliveryMethod, NetPee
 Fika有一个您可以继承的类叫做 `ThrottledMono`，您可以设置 `UpdateRate`，即每秒更新次数。这可以显著提高性能并减少使用的带宽。
 {% endhint %}
 
-### Calculating Packet Size (UDP with Headers)
+### 计算数据包大小（带头部的UDP）
 
-When sending data over a network using UDP, each packet consists of:
+使用UDP通过网络发送数据时，每个数据包包含：
 
-1. Your payload (the actual data, e.g., floats)
-2. Packet-specific overhead (1–4 bytes depending on the type, e.g. `Unreliable` or `ReliableOrdered`)
-3. UDP header (8 bytes)
-4. IP header (20–60 bytes, depending on IPv4 options)
+1. 有效负载（实际数据，例如浮点数）
+2. 数据包特有的开销（1–4字节，取决于类型，如`不可靠`或`可靠排序`）
+3. UDP头部（8字节）
+4. IP 头部（20-60字节，取决于IPv4选项）
 
-It’s important to account for all headers, not just the payload, because small payloads can become inefficient due to header overhead.
+必须考虑所有头部开销，而不仅是有效载荷，因为小数据量可能因头部开销导致效率低下。
 
-#### Formula
+#### 计算公式
 
-Let:
+设：
 
-* _**N**_ = number of elements being sent
-* _**S**_<sub>element</sub> = size of one element in bytes (e.g., 4 bytes for a `float`)
-* _**H**_<sub>packet​</sub> = packet-specific overhead (1–4 bytes)
-* _**H**_<sub>UDPH​</sub> = UDP header size (8 bytes)
-* _**H**_<sub>IPH</sub>​ = IP header size (20–60 bytes)
+* _**N**_ = 发送元素数量
+* _**S**_<sub>element</sub> = 单个元素字节大小（如浮点数为4字节）
+* _**H**_<sub>packet​</sub> = 数据包特定开销（1–4字节）
+* _**H**_<sub>UDPH​</sub> = UDP头部大小（8字节）
+* _**H**_<sub>IPH</sub>​ = IP头部大小（20–60字节）
 
-Then, the **total packet size in bytes** is:
-
-$$
-\text{Packet Size (bytes)} = N \times S_{\text{element}} + H_{\text{packet}} + H_{\text{udp}} + H_{\text{ip}}
-$$
-
-To convert to **bits**:
+因此，**总数据包大小（字节）**为：
 
 $$
-\text{Packet Size (bits)} = 8 \times \Big( N \cdot S_{\text{element}} + H_{\text{packet}} + H_{\text{udp}} + H_{\text{ip}} \Big)
+\text{数据包大小 (字节)} = N \times S_{\text{元素}} + H_{\text{数据包}} + H_{\text{udp}} + H_{\text{ip}}
+$$
+
+转换为**位**：
+
+$$
+\text{数据包大小 (位)} = 8 \times \Big( N \cdot S_{\text{元素}} + H_{\text{数据包}} + H_{\text{udp}} + H_{\text{ip}} \Big)
 $$
 
 ***
